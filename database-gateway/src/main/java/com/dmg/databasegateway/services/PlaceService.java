@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlaceService {
@@ -23,5 +24,13 @@ public class PlaceService {
     }
 
 
+    public Place addPlace(Place place) {
+        return repository.save(place);
 
+    }
+
+    public Place getPlace(long id) {
+        Optional<Place> place = repository.findById(id);
+        return place.get();
+    }
 }

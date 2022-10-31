@@ -3,10 +3,7 @@ package com.dmg.databasegateway.controllers;
 import com.dmg.databasegateway.models.Place;
 import com.dmg.databasegateway.services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,16 @@ public class PlaceController {
     @PostMapping(path="/addone")
     public Place addOneFixedPlace(){
         return placeService.addOneFixedPlace();
+    }
+
+    @PostMapping(path="/add")
+    public Place addPlace(@RequestBody Place place){
+        return placeService.addPlace(place);
+    }
+
+    @GetMapping(path="/get/{id}")
+    public Place getPlace(@PathVariable long id){
+        return placeService.getPlace(id);
     }
 
 
