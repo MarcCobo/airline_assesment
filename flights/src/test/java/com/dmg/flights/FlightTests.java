@@ -13,7 +13,10 @@ public class FlightTests {
          */
     }
 
-    public void getOriginsFromFlight_WhenCalled_ReturnPlaces(){
-
+    @Test
+    public void getDestinationsFromFlight_WhenCalled_ReturnPlaces(){
+        /*
+        Get the destinations from the flights
+         */
     }
 }
