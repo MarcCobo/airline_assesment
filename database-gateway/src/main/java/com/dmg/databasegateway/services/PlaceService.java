@@ -12,4 +12,16 @@ public class PlaceService {
 
     @Autowired
     private PlaceJpaRepository repository;
+
+    public List<Place> getAllPlace() {
+        return repository.findAll();
+    }
+
+    public Place addOneFixedPlace() {
+        Place newplace = new Place("Sevilla");
+        return repository.save(newplace);
+    }
+
+
+
 }

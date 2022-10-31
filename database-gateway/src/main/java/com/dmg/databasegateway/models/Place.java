@@ -20,6 +20,11 @@ public class Place {
     @OneToMany(mappedBy = "destination")
     @JsonIgnore
     private List<Flight> destinationFlights;
+
+    public Place(String name) {
+        this.name = name;
+    }
+
     public Place(long id, String name) {
         this.id = id;
         this.name = name;
