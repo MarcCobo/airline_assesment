@@ -10,7 +10,7 @@ public class Reservation {
     @Column
     private long id;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_flight")
+    @JoinColumn(name = "flight_id")
     private Flight flightId;
     @Column
     private String name;
@@ -34,6 +34,10 @@ public class Reservation {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+    }
+
+    public Reservation() {
+
     }
 
     public long getId() {

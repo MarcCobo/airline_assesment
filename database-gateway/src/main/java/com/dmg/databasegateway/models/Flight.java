@@ -1,8 +1,11 @@
 package com.dmg.databasegateway.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table
 public class Flight {
@@ -14,12 +17,11 @@ public class Flight {
     private String airline;
     @Column
     private String flight_num;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_place")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "origin")
     private Place origin;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_place")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "destination")
     private Place destination;
     @Column
     private LocalDate date;
@@ -33,6 +35,9 @@ public class Flight {
     private boolean luggage;
     @Column
     private double transit_time;
+    @OneToMany(mappedBy = "flightId")
+    @JsonIgnore
+    private List<Reservation> reservations;
 
     public Flight(long id, String airline, String flight_num, Place origin, Place destination, LocalDate date, double price, long layover, String layover_text, boolean luggage, double transit_time) {
         this.id = id;
@@ -46,6 +51,10 @@ public class Flight {
         this.layover_text = layover_text;
         this.luggage = luggage;
         this.transit_time = transit_time;
+    }
+
+    public Flight() {
+
     }
 
     public long getId() {
