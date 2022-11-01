@@ -39,6 +39,19 @@ public class Flight {
     @JsonIgnore
     private List<Reservation> reservations;
 
+    public Flight(String airline, String flight_num, Place origin, Place destination, LocalDate date, double price, long layover, String layover_text, boolean luggage, double transit_time) {
+        this.airline = airline;
+        this.flight_num = flight_num;
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
+        this.price = price;
+        this.layover = layover;
+        this.layover_text = layover_text;
+        this.luggage = luggage;
+        this.transit_time = transit_time;
+    }
+
     public Flight(long id, String airline, String flight_num, Place origin, Place destination, LocalDate date, double price, long layover, String layover_text, boolean luggage, double transit_time) {
         this.id = id;
         this.airline = airline;

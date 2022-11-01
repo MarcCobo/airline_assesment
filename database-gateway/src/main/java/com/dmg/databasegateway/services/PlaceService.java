@@ -26,7 +26,6 @@ public class PlaceService {
 
     public Place addPlace(Place place) {
         return repository.save(place);
-
     }
 
     public Place getPlace(long id) {
