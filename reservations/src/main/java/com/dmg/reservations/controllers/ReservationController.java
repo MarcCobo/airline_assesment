@@ -2,6 +2,7 @@ package com.dmg.reservations.controllers;
 
 import com.dmg.reservations.models.Reservation;
 import com.dmg.reservations.services.ReservationService;
+import io.restassured.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +20,8 @@ public class ReservationController {
     @Autowired
     ReservationService service;
 
-    @PostMapping(path = "/reservations")
-    public int makeReservation(@RequestBody Reservation reservation) {
+    @PostMapping(path = "/reservation/add")
+    public Response makeReservation(@RequestBody Reservation reservation) {
         return service.makeReservation(reservation);
     }
 }

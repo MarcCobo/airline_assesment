@@ -17,6 +17,7 @@ public class ReservationController {
 
     @PostMapping(path = "/add")
     public Reservation makeReservation(@RequestBody Reservation reservation){
+        System.out.println(reservation);
         return service.save(reservation);
     }
 }
