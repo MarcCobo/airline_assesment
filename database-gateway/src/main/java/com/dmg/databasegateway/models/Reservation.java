@@ -36,6 +36,16 @@ public class Reservation {
         this.bags = bags;
     }
 
+    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+        this.flightId = flightId;
+        this.name = name;
+        this.surname = surname;
+        this.nationality = nationality;
+        this.dni = dni;
+        this.age = age;
+        this.bags = bags;
+    }
+
     public Reservation() {
 
     }
