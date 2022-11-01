@@ -1,5 +1,6 @@
 package com.dmg.databasegateway.services;
 
+import com.dmg.databasegateway.models.Reservation;
 import com.dmg.databasegateway.repositories.ReservationJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,4 +10,8 @@ public class ReservationService {
 
     @Autowired
     private ReservationJpaRepository repository;
+
+    public Reservation save(Reservation reservation){
+        return repository.save(reservation);
+    }
 }

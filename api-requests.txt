@@ -1,0 +1,11 @@
+/dbapi
+	- /reservation
+		- POST /add
+	
+	- /place
+		- GET /getall
+		- GET /get/{id}
+		- POST /add
+		- POST /addOne !!!!! ONLY FOR DEBUG !!!!!
+	
+	- /flight
