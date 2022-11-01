@@ -20,7 +20,7 @@ class ReservationsApplicationTests {
 
 	@Test
 	public void MakeReservation_WhenCalled_ReturnReservation(){
-		Reservation rev = new Reservation(1, 1, "David", "Erena",
+		Reservation rev = new Reservation(1, null, "David", "Erena",
 				"Spanish", "12345678A", 23, false);
 		Response response = service.makeReservation(rev);
 		Assertions.assertEquals(response.statusCode(), 201);

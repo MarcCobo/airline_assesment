@@ -1,6 +1,8 @@
 package com.dmg.reservations.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Reservation {
 
     private long id;
@@ -13,7 +15,7 @@ public class Reservation {
     private boolean bags;
 
 
-    public Reservation(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+    public Reservation(long id, Long flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
