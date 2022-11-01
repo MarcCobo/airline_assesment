@@ -1,23 +1,21 @@
 package com.dmg.reservations.services;
 
 import com.dmg.reservations.models.Reservation;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
+import static io.restassured.RestAssured.given;
 
 @Service
 public class ReservationService {
-    public Reservation save(Reservation rev) {
-        throw new NotYetImplementedException("Save operation not implemented.");
+
+    public static String BASE_URI = "http://localhost:8080/dbapi";
+
+    public int makeReservation(Reservation rev) {
+        return given().body(rev).when().post(BASE_URI).statusCode();
     }
 
-    public Reservation findById(int id) {
-        throw new NotYetImplementedException("FindById operation not implemented.");
-    }
-
-    public List<Reservation> findByDate(LocalDate now) {
-        throw new NotYetImplementedException("FindByDate operation not implemented.");
-    }
+    /*
+    * Maybe we need something here for the price. Like, if you are over 9 years old
+    * it changes and all that stuff.
+    * */
 }
