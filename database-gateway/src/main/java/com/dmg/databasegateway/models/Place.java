@@ -9,7 +9,7 @@ import java.util.List;
 @Table
 public class Place {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
     @Column

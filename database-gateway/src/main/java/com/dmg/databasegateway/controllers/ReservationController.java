@@ -40,7 +40,6 @@ public class ReservationController {
     public Reservation makeReservation(@RequestBody ReservationDTO dto){
         Reservation reservation = new Reservation(dto);
         reservation.setFlightId(flightService.getFlight(dto.getFlightId()));
-        System.out.println(reservation);
         return reservationService.save(reservation);
     }
 

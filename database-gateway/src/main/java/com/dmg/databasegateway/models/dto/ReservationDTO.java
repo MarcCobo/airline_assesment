@@ -16,6 +16,17 @@ public class ReservationDTO {
 
     }
 
+    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+        this.id = id;
+        this.flightId = flightId;
+        this.name = name;
+        this.surname = surname;
+        this.nationality = nationality;
+        this.dni = dni;
+        this.age = age;
+        this.bags = bags;
+    }
+
     public ReservationDTO(Reservation reservation){
         this.id = reservation.getId();
         this.flightId = reservation.getFlightId().getId();
