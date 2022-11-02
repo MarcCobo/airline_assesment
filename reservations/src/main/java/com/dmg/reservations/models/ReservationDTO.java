@@ -10,6 +10,10 @@ public class ReservationDTO {
     private long age;
     private boolean bags;
 
+    public ReservationDTO(){
+
+    }
+
     public ReservationDTO(Reservation reservation){
         this.id = reservation.getId();
         this.flightId = reservation.getFlightId();
@@ -19,5 +23,51 @@ public class ReservationDTO {
         this.dni = reservation.getDni();
         this.age = reservation.getAge();
         this.bags = reservation.isBags();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public long getFlightId() {
+        return flightId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public long getAge() {
+        return age;
+    }
+
+    public boolean isBags() {
+        return bags;
+    }
+
+    @Override
+    public String toString() {
+        return "ReservationDTO{" +
+                "id=" + id +
+                ", flightId=" + flightId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", dni='" + dni + '\'' +
+                ", age=" + age +
+                ", bags=" + bags +
+                '}';
     }
 }

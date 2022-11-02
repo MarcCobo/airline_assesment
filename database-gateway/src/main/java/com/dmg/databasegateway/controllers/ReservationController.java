@@ -1,7 +1,8 @@
 package com.dmg.databasegateway.controllers;
 
-import com.dmg.databasegateway.models.Flight;
 import com.dmg.databasegateway.models.Reservation;
+import com.dmg.databasegateway.models.dto.ReservationDTO;
+import com.dmg.databasegateway.services.FlightService;
 import com.dmg.databasegateway.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,10 @@ import java.util.List;
 public class ReservationController {
 
     @Autowired
-    private ReservationService service;
+    private ReservationService reservationService;
+
+    @Autowired
+    private FlightService flightService;
 
     /*
     * BUG:  org.springframework.http.converter.HttpMessageNotReadableException:
@@ -24,22 +28,24 @@ public class ReservationController {
 
     @GetMapping(path = "/getall")
     public List<Reservation> getAllReservations() {
-        return service.getAllReservations();
+        return reservationService.getAllReservations();
     }
 
     @PostMapping(path="/addone")
     public Reservation addOneFixedReservation(){
-       return service.addOneFixedReservation();
+       return reservationService.addOneFixedReservation();
     }
 
     @PostMapping(path = "/add")
-    public Reservation makeReservation(@RequestBody Reservation reservation){
+    public Reservation makeReservation(@RequestBody ReservationDTO dto){
+        Reservation reservation = new Reservation(dto);
+        reservation.setFlightId(flightService.getFlight(dto.getFlightId()));
         System.out.println(reservation);
-        return service.save(reservation);
+        return reservationService.save(reservation);
     }
 
     @GetMapping(path="/get/{id}")
     public Reservation getReservation(@PathVariable long id){
-        return service.getReservation(id);
+        return reservationService.getReservation(id);
     }
 }
