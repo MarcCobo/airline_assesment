@@ -1,12 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainPage from './components/MainPage';
-
+import Layout from './components/layout/Layout';
 function App() {
   return (
-    <div className="App">
-      <MainPage />
-    </div>
+   <Layout>
+    
+   </Layout>
   );
 }
 
