@@ -51,10 +51,23 @@ public class FlightController {
                 flight.getLayover_text(), flight.isLuggage(), flight.getTransit_time());
     }
 
-    @GetMapping(path = "/get_dto/origin_and_date")
-    public List<FlightDTO> getFilteredFlightsByOriginAndDateDTO(@RequestParam String origin, @RequestParam LocalDate date){
+    @GetMapping(path = "/get_dto/origin")
+    public List<FlightDTO> getFilteredFlightsByOriginAndDateDTO(@RequestParam String origin){
         List<FlightDTO> flightDTOS = new ArrayList<>();
-        for(Flight flight : service.getFlightsFilterByOriginAndDate(origin, date)){
+        for(Flight flight : service.getFlightsFilterByOrigin(origin)){
+            flightDTOS.add(new FlightDTO(flight.getId(), flight.getAirline(),
+                    flight.getFlight_num(), flight.getOrigin().getId(),
+                    flight.getDestination().getId(), flight.getDate(), flight.getPrice(), flight.getLayover(),
+                    flight.getLayover_text(), flight.isLuggage(), flight.getTransit_time()));
+        }
+        return flightDTOS;
+    }
+
+    @GetMapping(path = "/get_dto/origin_and_date")
+    public List<FlightDTO> getFilteredFlightsByOriginAndDateDTO(@RequestParam String origin, @RequestParam String date){
+        List<FlightDTO> flightDTOS = new ArrayList<>();
+        LocalDate localDate = LocalDate.parse(date);
+        for(Flight flight : service.getFlightsFilterByOriginAndDate(origin, localDate)){
             flightDTOS.add(new FlightDTO(flight.getId(), flight.getAirline(),
                     flight.getFlight_num(), flight.getOrigin().getId(),
                     flight.getDestination().getId(), flight.getDate(), flight.getPrice(), flight.getLayover(),
@@ -64,9 +77,11 @@ public class FlightController {
     }
 
     @GetMapping(path = "/get_dto/origin_and_date_between")
-    public List<FlightDTO> getFilteredFlightsByOriginAndDateBetweenDTO(@RequestParam String origin, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate){
+    public List<FlightDTO> getFilteredFlightsByOriginAndDateBetweenDTO(@RequestParam String origin, @RequestParam String startDate, @RequestParam String endDate){
         List<FlightDTO> flightDTOS = new ArrayList<>();
-        for(Flight flight : service.getFlightsFilterByOriginAndDateBetween(origin, startDate, endDate)){
+        LocalDate localStartDate = LocalDate.parse(startDate);
+        LocalDate localEndDate = LocalDate.parse(endDate);
+        for(Flight flight : service.getFlightsFilterByOriginAndDateBetween(origin, localStartDate, localEndDate)){
             flightDTOS.add(new FlightDTO(flight.getId(), flight.getAirline(),
                     flight.getFlight_num(), flight.getOrigin().getId(),
                     flight.getDestination().getId(), flight.getDate(), flight.getPrice(), flight.getLayover(),
