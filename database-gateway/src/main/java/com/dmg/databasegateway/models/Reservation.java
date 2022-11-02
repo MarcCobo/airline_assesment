@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -52,6 +52,7 @@ public class Reservation {
     }
 
     public Reservation(ReservationDTO dto){
+        this.id = dto.getId();
         this.name = dto.getName();
         this.surname = dto.getSurname();
         this.nationality = dto.getNationality();
@@ -128,7 +129,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", flightId=" + flightId +
+                ", flightId=" + flightId.getId() +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", nationality='" + nationality + '\'' +
