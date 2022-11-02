@@ -157,4 +157,22 @@ public class Flight {
     public void setTransit_time(double transit_time) {
         this.transit_time = transit_time;
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", airline='" + airline + '\'' +
+                ", flight_num='" + flight_num + '\'' +
+                ", origin=" + origin +
+                ", destination=" + destination +
+                ", date=" + date +
+                ", price=" + price +
+                ", layover=" + layover +
+                ", layover_text='" + layover_text + '\'' +
+                ", luggage=" + luggage +
+                ", transit_time=" + transit_time +
+                ", reservations=" + reservations +
+                '}';
+    }
 }

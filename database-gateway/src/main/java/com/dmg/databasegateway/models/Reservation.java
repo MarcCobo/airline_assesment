@@ -1,5 +1,6 @@
 package com.dmg.databasegateway.models;
 
+import com.dmg.databasegateway.models.dto.ReservationDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -48,6 +49,15 @@ public class Reservation {
 
     public Reservation() {
 
+    }
+
+    public Reservation(ReservationDTO dto){
+        this.name = dto.getName();
+        this.surname = dto.getSurname();
+        this.nationality = dto.getNationality();
+        this.dni = dto.getDni();
+        this.age = dto.getAge();
+        this.bags = dto.isBags();
     }
 
     public long getId() {
