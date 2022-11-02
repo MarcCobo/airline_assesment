@@ -36,11 +36,12 @@ public class FlightController {
     @GetMapping(path = "/getalldto")
     public List<FlightDTO> getAllFlightsDTO() {
         List<FlightDTO> flightDTOS = new ArrayList<>();
-        service.getAllFlights().stream().map(flight -> flightDTOS.add(new FlightDTO(flight.getId(), flight.getAirline(),
+        for(Flight flight : service.getAllFlights()){
+            flightDTOS.add(new FlightDTO(flight.getId(), flight.getAirline(),
                 flight.getFlight_num(), flight.getOrigin().getId(),
                 flight.getDestination().getId(), flight.getDate(), flight.getPrice(), flight.getLayover(),
-                flight.getLayover_text(), flight.isLuggage(), flight.getTransit_time())));
-        System.out.println(flightDTOS);
+                flight.getLayover_text(), flight.isLuggage(), flight.getTransit_time()));
+        }
         return flightDTOS;
     }
 
