@@ -1,12 +1,14 @@
 package com.dmg.reservations.controllers;
 
-import com.dmg.reservations.models.Reservation;
+import com.dmg.reservations.models.ReservationDTO;
 import com.dmg.reservations.services.ReservationService;
-import io.restassured.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 /*
 * According to the assessment file, the only thing we have to do
@@ -15,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 * */
 
 @RestController
+@RequestMapping(path = "/reservation")
 public class ReservationController {
 
     @Autowired
     ReservationService service;
 
-    @PostMapping(path = "/reservation/add")
-    public Response makeReservation(@RequestBody Reservation reservation) {
+    @PostMapping(path = "/add")
+    public String makeReservation(@RequestBody ReservationDTO reservation) throws IOException {
         return service.makeReservation(reservation);
     }
 }

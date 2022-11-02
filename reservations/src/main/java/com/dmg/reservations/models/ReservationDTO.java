@@ -14,15 +14,47 @@ public class ReservationDTO {
 
     }
 
-    public ReservationDTO(Reservation reservation){
-        this.id = reservation.getId();
-        this.flightId = reservation.getFlightId();
-        this.name = reservation.getName();
-        this.surname = reservation.getSurname();
-        this.nationality = reservation.getNationality();
-        this.dni = reservation.getDni();
-        this.age = reservation.getAge();
-        this.bags = reservation.isBags();
+    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+        this.id = id;
+        this.flightId = flightId;
+        this.name = name;
+        this.surname = surname;
+        this.nationality = nationality;
+        this.dni = dni;
+        this.age = age;
+        this.bags = bags;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFlightId(long flightId) {
+        this.flightId = flightId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setAge(long age) {
+        this.age = age;
+    }
+
+    public void setBags(boolean bags) {
+        this.bags = bags;
     }
 
     public long getId() {
@@ -59,7 +91,7 @@ public class ReservationDTO {
 
     @Override
     public String toString() {
-        return "ReservationDTO{" +
+        return "{" +
                 "id=" + id +
                 ", flightId=" + flightId +
                 ", name='" + name + '\'' +

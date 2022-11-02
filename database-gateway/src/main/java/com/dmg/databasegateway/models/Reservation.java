@@ -129,7 +129,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", flightId=" + flightId.getId() +
+                ", flightId=" + flightId +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", nationality='" + nationality + '\'' +
