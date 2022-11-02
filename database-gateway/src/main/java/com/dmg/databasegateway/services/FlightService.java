@@ -24,18 +24,6 @@ public class FlightService {
     }
 
 
-    public Flight addFlight(Flight flight) {
-        return repository.save(flight);
-    }
-
-    public Flight addOneFixedFlight() {
-        Place origin = placeRepository.save(new Place("Sevilla"));
-        Place destination = placeRepository.save(new Place("Madrid"));
-
-        Flight newFlight = new Flight("Ryanair", "AN237190", origin, destination, LocalDate.now(), 50, 2L, "2 WHOLE LAYOVERS", true, 56);
-        return repository.save(newFlight);
-    }
-
     public Flight getFlight(long id) {
         Optional<Flight> flight = repository.findById(id);
         return flight.get();

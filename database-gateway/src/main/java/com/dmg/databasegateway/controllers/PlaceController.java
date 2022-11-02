@@ -19,16 +19,6 @@ public class PlaceController {
         return placeService.getAllPlace();
     }
 
-    @PostMapping(path="/addone")
-    public Place addOneFixedPlace(){
-        return placeService.addOneFixedPlace();
-    }
-
-    @PostMapping(path="/add")
-    public Place addPlace(@RequestBody Place place){
-        return placeService.addPlace(place);
-    }
-
     @GetMapping(path="/get/{id}")
     public Place getPlace(@PathVariable long id){
         return placeService.getPlace(id);

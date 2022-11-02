@@ -18,16 +18,6 @@ public class PlaceService {
         return repository.findAll();
     }
 
-    public Place addOneFixedPlace() {
-        Place newplace = new Place("Sevilla");
-        return repository.save(newplace);
-    }
-
-
-    public Place addPlace(Place place) {
-        return repository.save(place);
-    }
-
     public Place getPlace(long id) {
         Optional<Place> place = repository.findById(id);
         return place.get();

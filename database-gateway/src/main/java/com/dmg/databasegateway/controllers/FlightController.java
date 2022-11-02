@@ -20,14 +20,6 @@ public class FlightController {
         return service.getAllFlights();
     }
 
-    @PostMapping(path="/addone")
-    public Flight addOneFixedFlight(){
-        return service.addOneFixedFlight();
-    }
-    @PostMapping(path = "/add")
-    public Flight addFlight(@RequestBody Flight flight) {
-        return service.addFlight(flight);
-    }
 
     @GetMapping(path="/get/{id}")
     public Flight getFlight(@PathVariable long id){
