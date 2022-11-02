@@ -15,6 +15,10 @@ public class Flight {
     private boolean luggage;
     private double transit_time;
 
+    public Flight(){
+
+    }
+
     public Flight(long id, String airline, String flight_num, long origin, long destination, LocalDate date, double price, long layover, String layover_text, boolean luggage, double transit_time) {
         this.id = id;
         this.airline = airline;

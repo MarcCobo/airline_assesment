@@ -22,4 +22,8 @@ public class PlaceService {
         Optional<Place> place = repository.findById(id);
         return place.get();
     }
+
+    public Place findPlaceByName(String place){
+        return repository.findPlaceByName(place);
+    }
 }

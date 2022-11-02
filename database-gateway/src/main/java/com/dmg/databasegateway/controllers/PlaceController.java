@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="dbapi/place")
+@RequestMapping(value="db_api/place")
 public class PlaceController {
 
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping(path="/getall")
+    @GetMapping(path="/get_all")
     public List<Place> getAllPlace(){
         return placeService.getAllPlace();
     }

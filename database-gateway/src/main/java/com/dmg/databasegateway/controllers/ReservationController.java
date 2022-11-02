@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="dbapi/reservation")
+@RequestMapping(value="db_api/reservation")
 public class ReservationController {
 
     @Autowired
@@ -26,12 +26,12 @@ public class ReservationController {
     * REASON: flight_id is a long in Reservation API, but Flight in DB API
     * */
 
-    @GetMapping(path = "/getall")
+    @GetMapping(path = "/get_all")
     public List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
     }
 
-    @PostMapping(path="/addone")
+    @PostMapping(path="/add_one")
     public Reservation addOneFixedReservation(){
        return reservationService.addOneFixedReservation();
     }
