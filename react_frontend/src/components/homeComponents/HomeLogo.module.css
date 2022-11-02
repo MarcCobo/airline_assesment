@@ -1,0 +1,10 @@
+.div {
+  height: 300px;
+}
+
+.img {
+  display: flex;
+  position: absolute;
+  left: 32rem;
+  top: 13rem;
+}

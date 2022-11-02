@@ -11,7 +11,7 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-          <Link to="/new">Home</Link>
+          <Link to="/about">About</Link>
           </li>
           {
             /*
