@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 @SpringBootTest
@@ -30,21 +31,18 @@ public class FlightTests {
 
     @Test
     public void getFlightsFilteredByOriginAndDate_WhenCalled_ReturnFlightsDto(){
-        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Bigaa", "2022-11-02");
+        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Bigaa", "2022-11-20");
         Assertions.assertTrue(0 < flightList.size());
     }
 
     @Test
     public void getFlights_NoFlightsWithDate_MakeCallWithNextDayAndReturnFlights(){
-        /*
-        Get the date for the flights and if that dat doesn't have any flights search the next day
-         */
-    }
-
-    @Test
-    public void getDestinationsFromFlight_WhenCalled_ReturnPlaces(){
-        /*
-        Get the destinations from the flights
-         */
+        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Bigaa", "2022-11-19");
+        int counter = 0;
+        for (Flight flight : flightList){
+            if (flight.getDate().equals(LocalDate.parse("2022-11-19"))
+                    || flight.getDate().equals(LocalDate.parse("2022-11-20"))) counter++;
+        }
+        Assertions.assertEquals(flightList.size(), counter);
     }
 }
