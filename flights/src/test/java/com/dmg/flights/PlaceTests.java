@@ -1,9 +1,13 @@
 package com.dmg.flights;
 
+import com.dmg.flights.models.Place;
 import com.dmg.flights.services.PlaceService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 public class PlaceTests {
@@ -12,22 +16,19 @@ public class PlaceTests {
 
     @Test
     public void getAllPlaces_WhenCalled_ReturnAllPlaces(){
-        /*
-        Call the get all method in return all the places in the database
-         */
+        List<Place> list = placeService.getAllPlaces();
+        Assertions.assertTrue(0 < list.size());
     }
 
     @Test
     public void getPlace_WhenCalled_ReturnSpecificPlace(){
-        /*
-        Call the method with an id and return that place
-         */
+        Place place = placeService.getPlace(1);
+        Assertions.assertNotNull(place);
     }
 
     @Test
     public void getDestinations_WhenCalled_ReturnTheDestinationsAvailableFromThatOrigin(){
-        /*
-        Call the method you pass the origin place and gets all the possible destination places
-         */
+        List<String> list = placeService.getDestinations("Bigaa");
+        Assertions.assertTrue(0 < list.size());
     }
 }

@@ -18,6 +18,12 @@ public class FlightService {
                 .then().assertThat().statusCode(200).extract().as(Flight.class);
     }
 
+    public List<Flight> getAllFlights(){
+        RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
+        return given().when().get("/get_all_dto")
+                .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Flight.class);
+    }
+
     public List<Flight> getFlightFilterByOrigin(String origin) {
         RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
         return given().queryParam("origin", origin).when().get("/get_dto/origin")

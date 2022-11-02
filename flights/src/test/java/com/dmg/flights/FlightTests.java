@@ -24,6 +24,12 @@ public class FlightTests {
     }
 
     @Test
+    public void getAllFlightsDto_WhenCalled_ReturnAllFlights(){
+        List<Flight> list = service.getAllFlights();
+        Assertions.assertTrue(0 < list.size());
+    }
+
+    @Test
     public void getFlightsFilteredByOrigin_WhenCalled_ReturnFlightsDto(){
         List<Flight> flightList = service.getFlightFilterByOrigin("Bigaa");
         Assertions.assertTrue(0 < flightList.size());
