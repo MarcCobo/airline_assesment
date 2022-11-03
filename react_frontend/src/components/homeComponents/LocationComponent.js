@@ -6,7 +6,7 @@ function LocationComponent(props) {
 
 
   return (
-    <div className="col-sm-3">
+    <div className="col-sm-4">
       <Form.Select 
         name={props.locationnameid}
         aria-label="Default select example"

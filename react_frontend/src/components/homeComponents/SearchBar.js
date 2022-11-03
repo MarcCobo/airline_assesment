@@ -4,15 +4,17 @@ import LocationComponent from "./LocationComponent";
 import DatePickerComponent from "./DatePickerComponent";
 import SubmitButton from "./SubmitButton";
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
+import { DateRangePicker } from "rsuite";
 
 function SearchBar({ addFlights }) {
-  const history = useHistory();
+  //const history = useHistory();
   //const originsHardcoded = ["Barcelona", "Madrid", "Sevilla", "Bilbao"];
   //const destinations = ["Barcelona", "Madrid", "Sevilla", "Bilbao"];
 
   const [origins, setOrigins] = useState(null);
   const [destinations, setDestinations] = useState([]);
+  const [dates, setDates] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8081/place/get_all`, {
@@ -23,14 +25,17 @@ function SearchBar({ addFlights }) {
       .then((actualData) => setOrigins(actualData));
   }, []);
 
-  function originChangeHandler(e){
-    const value = e.target.value
-    console.log("change")
-    axios.get('http://localhost:8081/place/get_destinations', {params: {origin: value}})
-    .then((response) => {
-      console.log(response.data)
-      setDestinations(response.data)
-    })
+  function originChangeHandler(e) {
+    const value = e.target.value;
+    console.log("change");
+    axios
+      .get("http://localhost:8081/place/get_destinations", {
+        params: { origin: value },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setDestinations(response.data);
+      });
   }
 
   function GetDataFromUser(e) {
@@ -38,7 +43,7 @@ function SearchBar({ addFlights }) {
     const data2 = Object.fromEntries(new FormData(e.target));
     console.log(data2);
     FetchFlights(data2);
-    history.replace("/AvailableFlights");
+    //history.replace("/AvailableFlights");
   }
 
   function FetchFlights(data2) {
@@ -60,13 +65,12 @@ function SearchBar({ addFlights }) {
             className="col-sm-10 offset-sm-1"
             style={{ border: "2px solid black", borderRadius: "10px" }}
           >
-            <div className="container">
-              <p className="col-sm-3 title">Origin</p>
-              <p className="col-sm-3 title">Destination</p>
-              <p className="col-sm-3 title">Start date</p>
-              <p className="col-sm-3 title">End date</p>
+            <div className="container row justify-content-between">
+              <p className="col-sm-4 title">Origin</p>
+              <p className="col-sm-4 title">Destination</p>
+              <p className="col-sm-4 title">Dates</p>
             </div>
-            <Card.Body className="container">
+            <Card.Body className="container row justify-content-between">
               <LocationComponent
                 data={origins}
                 places={origins}
@@ -78,13 +82,20 @@ function SearchBar({ addFlights }) {
                 places={destinations}
                 locationnameid="destination"
               />
-              <DatePickerComponent datenameid="departure" />
-              <DatePickerComponent datenameid="arrival" />
+              <DateRangePicker
+              size="md"
+              className="col-sm-4"
+                format="yyyy-MM-dd"
+                defaultCalendarValue={[
+                  new Date("2022-11-01 00:00:00"),
+                  new Date("2022-12-01 23:59:59"),
+                ]}
+              />
+              {/* <DatePickerComponent datenameid="departure" />
+              <DatePickerComponent datenameid="arrival" /> */}
             </Card.Body>
           </Card>
-          
         </form>
-        
       </div>
       <SubmitButton />
     </div>
