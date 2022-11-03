@@ -28,7 +28,7 @@ public class PlaceController {
     }
 
     @GetMapping("get_destinations")
-    public List<String> getDestinations(@RequestParam String origin){
+    public List<Place> getDestinations(@RequestParam String origin){
         return service.getDestinations(origin);
     }
 }

@@ -35,13 +35,12 @@ public class PlaceService {
         return repository.findPlaceByName(place);
     }
 
-    public List<String> getDestinationsFromOrigin(String origin){
-        List<String> destinations = new ArrayList<>();
+    public List<Place> getDestinationsFromOrigin(String origin){
+        List<Place> destinations = new ArrayList<>();
         Place place = findPlaceByName(origin);
-        System.out.println(place);
         List<Flight> flightByOrigin = flightJpaRepository.findFlightByOrigin(place);
         for (Flight flight : flightByOrigin){
-            destinations.add(flight.getDestination().getName());
+            destinations.add(flight.getDestination());
         }
         System.out.println(destinations);
         return destinations.stream().distinct().collect(Collectors.toList());

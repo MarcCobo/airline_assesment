@@ -15,20 +15,20 @@ public class PlaceService {
 
     public Place getPlace(long id){
 //        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
-        return given().when().get(BASE_URL + "/get/" + id)
+        return given().when().get(BASE_URL + "get/" + id)
                 .then().assertThat().statusCode(200).extract().as(Place.class);
     }
 
     public List<Place> getAllPlaces(){
-        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
+        RestAssured.baseURI = "http://localhost:8080/db_api/place";
         return given().when().get("/get_all")
                 .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Place.class);
     }
 
 
-    public List<String> getDestinations(String origin){
-//        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
-        return given().queryParam("origin", origin).when().get(BASE_URL + "/get_destinations")
-                .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", String.class);
+    public List<Place> getDestinations(String origin){
+       // RestAssured.baseURI = "http://localhost:8080/db_api/place";
+        return given().log().all().queryParam("origin", origin).when().get(BASE_URL + "get_destinations")
+                .then().log().all().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Place.class);
     }
 }
