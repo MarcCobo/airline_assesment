@@ -1,0 +1,14 @@
+.bigcontainer{
+    padding-top: 20px;
+}
+
+.container {
+  margin-left: 102px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+  width: 1300px;
+  background-color: white;
+  border-radius: 50px;
+}
