@@ -5,6 +5,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import AvailableFlights from "./pages/AvailableFlights";
 import { useEffect, useState } from "react";
+import ReservationForm from "./components/bookComponents/ReservationForm";
 
 function App() {
   const[availableFlights, setAvailableFlights]= useState()
@@ -26,7 +27,8 @@ function App() {
         <Route path="/AvailableFlights">
           <AvailableFlights flights={availableFlights}/>
         </Route>
-        <Route path="/fav">
+        <Route path="/res">
+          <ReservationForm />
         </Route>
       </Switch>
    </Layout>
