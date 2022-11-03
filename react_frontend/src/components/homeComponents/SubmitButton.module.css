@@ -1,25 +1,25 @@
 .div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 
 .div button {
-    height:6rem;
-    background-color: #552280; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 98px;
-    margin: 76px;
-    font-size: 25px;
-    width: 25%;
-  }
+  height:6rem;
+  background-color: #552280; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 98px;
+  margin: 76px;
+  font-size: 25px;
+  width: 25%;
+}
 
-  .div button:hover {
-    background-color: white;
-    color: #552280;
-  }
+.div button:hover {
+  background-color: white;
+  color: #552280;
+}

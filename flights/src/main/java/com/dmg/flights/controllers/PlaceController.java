@@ -26,6 +26,7 @@ public class PlaceController {
         return service.getAllPlaces();
     }
 
+    @CrossOrigin
     @GetMapping("get_destinations")
     public List<Place> getDestinations(@RequestParam String origin){
         return service.getDestinations(origin);
