@@ -28,7 +28,7 @@ public class PlaceTests {
 
     @Test
     public void getDestinations_WhenCalled_ReturnTheDestinationsAvailableFromThatOrigin(){
-        List<String> list = placeService.getDestinations("Bigaa");
+        List<Place> list = placeService.getDestinations("Sevilla");
         Assertions.assertTrue(0 < list.size());
     }
 }

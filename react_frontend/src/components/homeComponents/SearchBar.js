@@ -6,7 +6,6 @@ import DatePickerComponent from "./DatePickerComponent";
 import SubmitButton from "./SubmitButton";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { DateRangePicker } from "rsuite";
 
 function SearchBar({ addFlights }) {
   //const history = useHistory();
@@ -27,13 +26,11 @@ function SearchBar({ addFlights }) {
 
   function originChangeHandler(e) {
     const value = e.target.value;
-    console.log("change");
     axios
       .get("http://localhost:8081/place/get_destinations", {
         params: { origin: value },
       })
       .then((response) => {
-        console.log(response.data);
         setDestinations(response.data);
       });
   }

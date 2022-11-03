@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
@@ -16,62 +15,70 @@ import java.io.IOException;
 @SpringBootTest
 class ReservationsApplicationTests {
 
-	@Autowired
-	private ReservationService service;
+    @Autowired
+    private ReservationService service;
 
-	@Test
-	public void MakeReservation_CorrectData_ReturnCreatedCode() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "12345678A", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_CorrectData_ReturnCreatedCode() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "12345678A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_NegativeFlightId_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, -1L, "David", "Erena",
-				"Spanish", "12345678A", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_NegativeFlightId_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, -1L, "David", "Erena",
+                "Spanish", "12345678A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_NameEmpty_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "", "Erena",
-				"Spanish", "12345678A", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_NameEmpty_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "", "Erena",
+                "Spanish", "12345678A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_SurnameEmpty_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "",
-				"Spanish", "12345678A", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_SurnameEmpty_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "",
+                "Spanish", "12345678A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_NationalityEmpty_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"", "12345678A", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_NationalityEmpty_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "", "12345678A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_DniEmpty_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "", 23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_DniEmpty_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void MakeReservation_NegativeAge_ReturnBadRequest() throws IOException {
-		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "", -23, false, 0.0);
-		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
-		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+    @Test
+    public void MakeReservation_NegativeAge_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "", -23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void getVariablePrice_WhenCalled_ReturnAccordingPrice() {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "", 23, true, 200.0);
+        double result = service.getVariablePrice(rev);
+		Assertions.assertEquals(300.0, result);
+    }
 }

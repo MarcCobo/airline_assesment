@@ -11,7 +11,7 @@ function LocationComponent(props) {
         {...props}
 
       >
-        {/* {<option selected disabled>Choose one</option>} */}
+        {<option selected disabled>Choose one</option>}
         {props.data &&
           props.data.map((place, index) => (
             <option key={index} value={place.name} id={place.id}>
