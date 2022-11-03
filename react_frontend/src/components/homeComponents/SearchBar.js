@@ -26,13 +26,11 @@ function SearchBar({ addFlights }) {
 
   function originChangeHandler(e) {
     const value = e.target.value;
-    console.log("change");
     axios
       .get("http://localhost:8081/place/get_destinations", {
         params: { origin: value },
       })
       .then((response) => {
-        console.log(response.data);
         setDestinations(response.data);
       });
   }

@@ -31,19 +31,19 @@ public class FlightTests {
 
     @Test
     public void getFlightsFilteredByOrigin_WhenCalled_ReturnFlightsDto(){
-        List<Flight> flightList = service.getFlightFilterByOrigin("Bigaa");
+        List<Flight> flightList = service.getFlightFilterByOrigin("Sevilla");
         Assertions.assertTrue(0 < flightList.size());
     }
 
     @Test
     public void getFlightsFilteredByOriginAndDate_WhenCalled_ReturnFlightsDto(){
-        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Bigaa", "2022-11-20");
+        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Sevilla", "2022-11-20");
         Assertions.assertTrue(0 < flightList.size());
     }
 
     @Test
     public void getFlights_NoFlightsWithDate_MakeCallWithNextDayAndReturnFlights(){
-        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Bigaa", "2022-11-19");
+        List<Flight> flightList = service.getFlightFilterByOriginAndDate("Sevilla", "2022-11-19");
         int counter = 0;
         for (Flight flight : flightList){
             if (flight.getDate().equals(LocalDate.parse("2022-11-19"))
