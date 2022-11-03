@@ -37,6 +37,12 @@ public class FlightService {
         return repository.findFlightByOriginAndDateBetween(place, startDate, endDate);
     }
 
+    public List<Flight> getFlightsFilterByOriginAndDestinationAndDateBetween(String origin, String destination, LocalDate startDate, LocalDate endDate) {
+        Place place = placeService.findPlaceByName(origin);
+        Place place2 = placeService.findPlaceByName(destination);
+        return repository.findFlightByOriginAndDestinationAndDateBetween(place, place2, startDate, endDate);
+    }
+
     public List<Flight> getFlightsFilterByOriginAndDate(String origin, LocalDate startDate) {
         Place place = placeService.findPlaceByName(origin);
         return repository.findFlightByOriginAndDate(place, startDate);

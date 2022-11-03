@@ -1,6 +1,7 @@
 package com.dmg.flights.services;
 
 import com.dmg.flights.models.Flight;
+import com.dmg.flights.models.Place;
 import io.restassured.RestAssured;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,11 @@ import static io.restassured.RestAssured.given;
 @Service
 public class FlightService {
 
+    private static String BASE_URL = "http://localhost:8080/db_api/flight/";
+
     public Flight getFlight(long id) {
-        RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
-        return given().when().get("/get_dto/" + id)
+//        RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
+        return given().when().get(BASE_URL + "/get_dto/" + id)
                 .then().assertThat().statusCode(200).extract().as(Flight.class);
     }
 
@@ -48,6 +51,15 @@ public class FlightService {
         RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
         List<Flight> list = given().queryParam("origin", origin).queryParam("startDate", startDate)
                 .queryParam("endDate", endDate).when().get("/get_dto/origin_and_date_between")
+                .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Flight.class);
+        System.out.println(list);
+        return list;
+    }
+
+    public List<Flight> getFlightFilterByOriginAndDestinationAndDateBetween(String origin, String destination, String startDate, String endDate) {
+        RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
+        List<Flight> list = given().queryParam("origin", origin).queryParam("destination", destination).queryParam("startDate", startDate)
+                .queryParam("endDate", endDate).when().get("/get_dto/origin_and_destination_and_date_between")
                 .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Flight.class);
         System.out.println(list);
         return list;

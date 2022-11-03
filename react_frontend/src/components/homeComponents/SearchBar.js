@@ -8,6 +8,8 @@ function SearchBar() {
   const origins = ["Barcelona", "Madrid", "Sevilla", "Bilbao"];
   const destinations = ["Barcelona", "Madrid", "Sevilla", "Bilbao"];
 
+
+
   return (
     <div>
       <div id="div">

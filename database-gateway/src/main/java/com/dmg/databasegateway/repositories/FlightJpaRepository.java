@@ -12,5 +12,6 @@ import java.util.List;
 public interface FlightJpaRepository extends JpaRepository<Flight, Long> {
     public List<Flight> findFlightByOrigin(Place place);
     public List<Flight> findFlightByOriginAndDateBetween(Place place, LocalDate startDate, LocalDate endDate);
+    public List<Flight> findFlightByOriginAndDestinationAndDateBetween(Place place, Place place2, LocalDate startDate, LocalDate endDate);
     public List<Flight> findFlightByOriginAndDate(Place place, LocalDate startDate);
 }

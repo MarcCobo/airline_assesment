@@ -10,9 +10,12 @@ import static io.restassured.RestAssured.given;
 
 @Service
 public class PlaceService {
+
+    private static String BASE_URL = "http://localhost:8080/db_api/place/";
+
     public Place getPlace(long id){
-        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
-        return given().when().get("/get/" + id)
+//        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
+        return given().when().get(BASE_URL + "/get/" + id)
                 .then().assertThat().statusCode(200).extract().as(Place.class);
     }
 
@@ -22,9 +25,10 @@ public class PlaceService {
                 .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", Place.class);
     }
 
+
     public List<String> getDestinations(String origin){
-        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
-        return given().queryParam("origin", origin).when().get("/get_destinations")
+//        RestAssured.baseURI = "http://localhost:8080/db_api/place/";
+        return given().queryParam("origin", origin).when().get(BASE_URL + "/get_destinations")
                 .then().assertThat().statusCode(200).extract().body().jsonPath().getList(".", String.class);
     }
 }
