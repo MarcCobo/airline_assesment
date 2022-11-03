@@ -17,7 +17,7 @@ public class FlightService {
 
     public Flight getFlight(long id) {
 //        RestAssured.baseURI = "http://localhost:8080/db_api/flight/";
-        return given().when().get(BASE_URL + "/get_dto/" + id)
+        return given().when().get(BASE_URL + "get_dto/" + id)
                 .then().assertThat().statusCode(200).extract().as(Flight.class);
     }
 
