@@ -33,7 +33,8 @@ public class ReservationService {
     private boolean checkInput(ReservationDTO dto) {
         if (dto.getFlightId() < 0 || dto.getName().isEmpty()
                 || dto.getSurname().isEmpty() || dto.getNationality().isEmpty()
-                || dto.getDni().isEmpty() || dto.getAge() <= 0) {
+                || dto.getDni().length() != 9 || !dto.getDni().toLowerCase().matches("^(\\d*)[a-z]$")
+                || dto.getAge() <= 0) {
             return false;
         }
         return true;
