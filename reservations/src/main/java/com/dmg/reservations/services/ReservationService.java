@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import static io.restassured.RestAssured.given;
 
@@ -38,16 +39,13 @@ public class ReservationService {
         return true;
     }
 
-    /*
-     * Maybe we need something here for the price. Like, if you are over 9 years old
-     * it changes and all that stuff.
-     * */
-
-    public double getVariablePrice(ReservationDTO reservationDTO) {
+    public double getVariablePrice(int[] ages, boolean bags, double price) {
         double cumulativeExtra = 0;
-        if (reservationDTO.getAge() >= 9) cumulativeExtra += 0.2;
-        if (2 <= reservationDTO.getAge() && reservationDTO.getAge() < 9) cumulativeExtra += 0.1;
-        if (reservationDTO.isBags()) cumulativeExtra += 0.3;
-        return reservationDTO.getPrice() + (reservationDTO.getPrice() * cumulativeExtra);
+        for (int age : ages) {
+            if (age >= 9) cumulativeExtra += 0.2;
+            if (2 <= age && age < 9) cumulativeExtra += 0.1;
+        }
+        if (bags) cumulativeExtra += 0.3;
+        return price * ages.length + (price * cumulativeExtra);
     }
 }

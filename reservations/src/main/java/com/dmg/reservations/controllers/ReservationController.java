@@ -4,12 +4,10 @@ import com.dmg.reservations.models.ReservationDTO;
 import com.dmg.reservations.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 /*
  * According to the assessment file, the only thing we have to do
@@ -29,8 +27,11 @@ public class ReservationController {
         return service.makeReservation(reservation);
     }
 
-    @PostMapping(path = "/get_variable_price")
-    public double getVariablePrice(@RequestBody ReservationDTO reservationDTO) {
-        return service.getVariablePrice(reservationDTO);
+    @CrossOrigin
+    @GetMapping(path = "/get_variable_price")
+    public double getVariablePrice(@RequestParam(name = "ages") List<Integer> ages,
+                                   @RequestParam(name = "bags") boolean bags, @RequestParam(name = "price") double price) {
+        System.out.println(ages);
+        return service.getVariablePrice(ages.stream().mapToInt(i->i).toArray(), bags, price);
     }
 }

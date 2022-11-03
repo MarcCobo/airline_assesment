@@ -76,9 +76,11 @@ class ReservationsApplicationTests {
 
     @Test
     public void getVariablePrice_WhenCalled_ReturnAccordingPrice() {
-        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-                "Spanish", "", 23, true, 200.0);
-        double result = service.getVariablePrice(rev);
-		Assertions.assertEquals(300.0, result);
+        int[] ages = new int[3];
+        ages[0] = 1;
+        ages[1] = 5;
+        ages[2] = 18;
+        double result = service.getVariablePrice(ages, true, 200);
+		Assertions.assertEquals(720, result);
     }
 }
