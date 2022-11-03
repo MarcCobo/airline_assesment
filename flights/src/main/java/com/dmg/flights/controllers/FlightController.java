@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("flight")
+@CrossOrigin
 public class FlightController {
 
     @Autowired

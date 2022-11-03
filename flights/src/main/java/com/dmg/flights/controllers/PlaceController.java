@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("place")
+@CrossOrigin
 public class PlaceController {
 
     @Autowired
