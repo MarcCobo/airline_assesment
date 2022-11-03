@@ -1,8 +1,8 @@
 .main {
-    margin: auto;
-    width: 100%;
-    height: 800px;
-    background-image: url("background_blurred.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  margin: auto;
+  width: 100%;
+  height: 800px;
+  background-image: url("background_blurred.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

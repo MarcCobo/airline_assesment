@@ -41,6 +41,7 @@ public class FlightController {
         return service.getFlightFilterByOriginAndDateBetween(origin, startDate, endDate);
     }
 
+    @CrossOrigin
     @GetMapping("get_by_origin_destination_date_between")
     public List<Flight> getFlightsByOriginAndDateBetween(@RequestParam String origin, @RequestParam String destination, @RequestParam String startDate, @RequestParam String endDate){
         return service.getFlightFilterByOriginAndDestinationAndDateBetween(origin, destination, startDate, endDate);
