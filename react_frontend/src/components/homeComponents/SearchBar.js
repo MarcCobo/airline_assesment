@@ -15,7 +15,6 @@ function SearchBar({ addFlights }) {
   const history = useHistory();
   const [origins, setOrigins] = useState(null);
   const [destinations, setDestinations] = useState([]);
-  const [dates, setDates] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8081/place/get_all`, {
@@ -68,30 +67,27 @@ function SearchBar({ addFlights }) {
         <form id="SearchForm" onSubmit={GetDataFromUser}>
           <Card
             className="col-sm-10 offset-sm-1"
-            style={{ border: "2px solid black", borderRadius: "98px" }}
           >
             <div className="container row justify-content-between">
-              <p className="col-sm-4 title">Origin</p>
-              <p className="col-sm-4 title">Destination</p>
-              <p className="col-sm-4 title">Dates</p>
+              <p className="col-sm-3 title">Origin</p>
+              <p className="col-sm-3 title">Destination</p>
+              <p className="col-sm-3 title">Start date</p>
+              <p className="col-sm-3 title">End date</p>
             </div>
-            <Card.Body className="container row justify-content-between">
-              <LocationComponent places={origins} locationnameid="origin" />
+            <Card.Body className="container">
+            <LocationComponent
+                data={origins}
+                places={origins}
+                locationnameid="origin"
+                onChange={originChangeHandler}
+              />
               <LocationComponent
+                data={destinations}
                 places={destinations}
                 locationnameid="destination"
               />
-              <DateRangePicker
-              size="md"
-              className="col-sm-4"
-                format="yyyy-MM-dd"
-                defaultCalendarValue={[
-                  new Date("2022-11-01 00:00:00"),
-                  new Date("2022-12-01 23:59:59"),
-                ]}
-              />
-              {/* <DatePickerComponent datenameid="departure" />
-              <DatePickerComponent datenameid="arrival" /> */}
+              <DatePickerComponent datenameid="startDate" />
+              <DatePickerComponent datenameid="endDate" /> 
             </Card.Body>
           </Card>
         </form>
