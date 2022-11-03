@@ -38,7 +38,7 @@ insert into Flight (airline, flight_num, origin, destination, date, price, layov
 insert into Flight (airline, flight_num, origin, destination, date, price, layover, layover_text, luggage, transit_time) values ( 'Omba', '6875', 9, 2, '2022-11-23', 407, 2, 'Bamity', true, 8.24);
 insert into Flight (airline, flight_num, origin, destination, date, price, layover, layover_text, luggage, transit_time) values ( 'Twiyo', '6576', 3, 12, '2022-11-12', 835, 0, 'Stringtough', true, 13.13);
 insert into Flight (airline, flight_num, origin, destination, date, price, layover, layover_text, luggage, transit_time) values ( 'Yakijo', '4417', 20, 5, '2022-11-25', 748, 2, 'Fix San', true, 0.9);
-insert into Flight (airline, flight_num, origin, destination, date, price, layover, layover_text, luggage, transit_time) values ( 'Test', '4132', 8, 5, '2022-11-20', 748, 2, 'Fix San', true, 0.9);
+insert into Flight (airline, flight_num, origin, destination, date, price, layover, layover_text, luggage, transit_time) values ( 'Test', '4132', 8, 18, '2022-11-20', 748, 2, 'Fix San', true, 0.9);
 insert into Reservation (flight_id, name, surname, nationality, dni, age, bags) values (9, 'Morna', 'Davidovsky', 'Norway', '5236458846', 80, true);
 insert into Reservation (flight_id, name, surname, nationality, dni, age, bags) values (2, 'Lisha', 'Northfield', 'Central African Republic', '9187880792', 37, false);
 insert into Reservation (flight_id, name, surname, nationality, dni, age, bags) values (17, 'Olivette', 'Ivasechko', 'Portugal', '0971359261', 24, false);

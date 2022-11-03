@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 /*
-* According to the assessment file, the only thing we have to do
-* with reservations is just make them, we do not need to show them or
-* anything.
-* */
+ * According to the assessment file, the only thing we have to do
+ * with reservations is just make them, we do not need to show them or
+ * anything.
+ * */
 
 @RestController
 @RequestMapping(path = "/reservation")
@@ -27,5 +27,10 @@ public class ReservationController {
     @PostMapping(path = "/add")
     public ResponseEntity<ReservationDTO> makeReservation(@RequestBody ReservationDTO reservation) throws IOException {
         return service.makeReservation(reservation);
+    }
+
+    @PostMapping(path = "/get_variable_price")
+    public double getVariablePrice(@RequestBody ReservationDTO reservationDTO) {
+        return service.getVariablePrice(reservationDTO);
     }
 }

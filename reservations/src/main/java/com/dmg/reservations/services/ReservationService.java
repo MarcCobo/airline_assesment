@@ -43,14 +43,11 @@ public class ReservationService {
      * it changes and all that stuff.
      * */
 
-    public double getVariablePrice(int passengers, int[] ages, boolean luggage, double basePrice) {
+    public double getVariablePrice(ReservationDTO reservationDTO) {
         double cumulativeExtra = 0;
-        for (int i = 0; i < passengers; i++) {
-            int age = ages[i];
-            if (age > 9) cumulativeExtra += 0.2;
-            if (2 < age && age < 9) cumulativeExtra += 0.1;
-        }
-        if (luggage) cumulativeExtra += 0.3;
-        return basePrice * passengers + (basePrice * cumulativeExtra);
+        if (reservationDTO.getAge() >= 9) cumulativeExtra += 0.2;
+        if (2 <= reservationDTO.getAge() && reservationDTO.getAge() < 9) cumulativeExtra += 0.1;
+        if (reservationDTO.isBags()) cumulativeExtra += 0.3;
+        return reservationDTO.getPrice() + (reservationDTO.getPrice() * cumulativeExtra);
     }
 }
