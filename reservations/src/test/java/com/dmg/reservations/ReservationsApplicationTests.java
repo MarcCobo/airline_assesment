@@ -67,6 +67,22 @@ class ReservationsApplicationTests {
     }
 
     @Test
+    public void MakeReservation_DniLessThanEightCharacters_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "123456A", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void MakeReservation_DniIncorrectFormat_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
+                "Spanish", "1a345678", 23, false, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
     public void MakeReservation_NegativeAge_ReturnBadRequest() throws IOException {
         ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
                 "Spanish", "", -23, false, 0.0);
