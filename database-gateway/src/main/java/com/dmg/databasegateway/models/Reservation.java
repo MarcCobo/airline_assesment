@@ -2,6 +2,7 @@ package com.dmg.databasegateway.models;
 
 import com.dmg.databasegateway.models.dto.ReservationDTO;
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table
@@ -25,8 +26,11 @@ public class Reservation {
     private long age;
     @Column
     private boolean bags;
+    @Column
+    @ColumnDefault("0.0")
+    private double price;
 
-    public Reservation(long id, Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+    public Reservation(long id, Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
@@ -35,9 +39,10 @@ public class Reservation {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.price = price;
     }
 
-    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
         this.flightId = flightId;
         this.name = name;
         this.surname = surname;
@@ -45,6 +50,7 @@ public class Reservation {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.price = price;
     }
 
     public Reservation() {
@@ -59,6 +65,7 @@ public class Reservation {
         this.dni = dto.getDni();
         this.age = dto.getAge();
         this.bags = dto.isBags();
+        this.price = dto.getPrice();
     }
 
     public long getId() {
@@ -123,6 +130,14 @@ public class Reservation {
 
     public void setBags(boolean bags) {
         this.bags = bags;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

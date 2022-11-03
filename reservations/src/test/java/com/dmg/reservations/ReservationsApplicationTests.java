@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
 
@@ -17,58 +20,58 @@ class ReservationsApplicationTests {
 	private ReservationService service;
 
 	@Test
-	public void MakeReservation_CorrectData_DoesNotThrow() throws IOException {
+	public void MakeReservation_CorrectData_ReturnCreatedCode() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "12345678A", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertDoesNotThrow(() -> service.makeReservation(rev));
+				"Spanish", "12345678A", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_NegativeFlightId_ReturnEmpty() throws IOException {
+	public void MakeReservation_NegativeFlightId_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, -1L, "David", "Erena",
-				"Spanish", "12345678A", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"Spanish", "12345678A", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_NameEmpty_ReturnEmpty() throws IOException {
+	public void MakeReservation_NameEmpty_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "", "Erena",
-				"Spanish", "12345678A", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"Spanish", "12345678A", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_SurnameEmpty_ReturnEmpty() throws IOException {
+	public void MakeReservation_SurnameEmpty_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "",
-				"Spanish", "12345678A", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"Spanish", "12345678A", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_NationalityEmpty_ReturnEmpty() throws IOException {
+	public void MakeReservation_NationalityEmpty_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"", "12345678A", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"", "12345678A", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_DniEmpty_ReturnEmpty() throws IOException {
+	public void MakeReservation_DniEmpty_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "", 23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"Spanish", "", 23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 
 	@Test
-	public void MakeReservation_NegativeAge_ReturnEmpty() throws IOException {
+	public void MakeReservation_NegativeAge_ReturnBadRequest() throws IOException {
 		ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena",
-				"Spanish", "", -23, false);
-		String response = service.makeReservation(rev);
-		Assertions.assertTrue(response.isEmpty());
+				"Spanish", "", -23, false, 0.0);
+		ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+		Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 	}
 }

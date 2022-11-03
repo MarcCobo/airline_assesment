@@ -9,12 +9,13 @@ public class ReservationDTO {
     private String dni;
     private long age;
     private boolean bags;
+    private double price;
 
     public ReservationDTO(){
 
     }
 
-    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags) {
+    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
@@ -23,6 +24,15 @@ public class ReservationDTO {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public void setId(long id) {
@@ -91,7 +101,7 @@ public class ReservationDTO {
 
     @Override
     public String toString() {
-        return "{" +
+        return "ReservationDTO{" +
                 "id=" + id +
                 ", flightId=" + flightId +
                 ", name='" + name + '\'' +
@@ -100,6 +110,7 @@ public class ReservationDTO {
                 ", dni='" + dni + '\'' +
                 ", age=" + age +
                 ", bags=" + bags +
+                ", price=" + price +
                 '}';
     }
 }
