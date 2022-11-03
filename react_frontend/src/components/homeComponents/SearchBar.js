@@ -6,7 +6,6 @@ import DatePickerComponent from "./DatePickerComponent";
 import SubmitButton from "./SubmitButton";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { DateRangePicker } from "rsuite";
 
 function SearchBar({ addFlights }) {
   //const history = useHistory();
