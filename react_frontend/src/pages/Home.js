@@ -1,13 +1,11 @@
 import HomeLogo from "../components/homeComponents/HomeLogo";
 import SearchBar from "../components/homeComponents/SearchBar";
 
-function Home({addFlights}) {
-  
-
+function Home() {
   return (
     <div>
       <HomeLogo />
-      <SearchBar addFlights={addFlights} />
+      <SearchBar />
     </div>
   );
 }

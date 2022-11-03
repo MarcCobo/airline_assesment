@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import "./SearchBar.css";
 import LocationComponent from "./LocationComponent";
@@ -56,7 +55,7 @@ function SearchBar({ addFlights }) {
   return (
     <div>
       <div id="div">
-        <form id="SearchForm" onSubmit={GetDataFromUser}>
+        <form id="SearchForm">
           <Card
             className="col-sm-10 offset-sm-1"
             style={{ border: "2px solid black", borderRadius: "10px" }}
@@ -79,11 +78,13 @@ function SearchBar({ addFlights }) {
                 places={destinations}
                 locationnameid="destination"
               />
-              <DatePickerComponent datenameid="startDate" />
-              <DatePickerComponent datenameid="endDate" />
+              <DatePickerComponent datenameid="departure" />
+              <DatePickerComponent datenameid="arrival" />
             </Card.Body>
           </Card>
+          
         </form>
+        
       </div>
       <SubmitButton />
     </div>
