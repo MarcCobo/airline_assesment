@@ -1,10 +1,13 @@
+import classes from './AvailableFlights.module.css'
+
 function AvailableFlights({ flights }) {
   return (
     <div>
 
       {flights && flights.map((flight, index) => {
         return (
-          <div className="card" key={index}>
+          <div className={classes.bigcontainer}>
+          <div className={classes.container} key={index}>
             <div className="card-body">
               <h5 className="card-title">{flight.layover_text}</h5>
               <p className="card-text">
@@ -15,6 +18,7 @@ function AvailableFlights({ flights }) {
                 Go somewhere
               </a> */}
             </div>
+          </div>
           </div>
         );
       })}
