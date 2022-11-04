@@ -34,7 +34,8 @@ public class ReservationService {
         if (dto.getFlightId() < 0 || dto.getName().isEmpty()
                 || dto.getSurname().isEmpty() || dto.getNationality().isEmpty()
                 || dto.getDni().length() != 9 || !dto.getDni().toLowerCase().matches("^(\\d*)[a-z]$")
-                || dto.getAge() <= 0) {
+                || dto.getAge() <= 0
+                || dto.getEmail().length() <= 0 || !dto.getEmail().toLowerCase().matches("^(\\w+)@([a-z]+)\\.([a-z]+)$")){
             return false;
         }
         return true;
