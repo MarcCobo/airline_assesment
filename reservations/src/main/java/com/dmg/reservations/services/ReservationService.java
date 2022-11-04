@@ -35,7 +35,7 @@ public class ReservationService {
                 || dto.getSurname().isEmpty() || dto.getNationality().isEmpty()
                 || dto.getDni().length() != 9 || !dto.getDni().toLowerCase().matches("^(\\d*)[a-z]$")
                 || dto.getAge() <= 0
-                || dto.getEmail().length() <= 0 || !dto.getEmail().toLowerCase().matches("^(\\w+)@([a-z]+)\\.([a-z]+)$")){
+                || dto.getEmail().length() <= 0 || !dto.getEmail().toLowerCase().matches("^([a-z])(\\w+)@([a-z]+)\\.([a-z]+)$")){
             return false;
         }
         return true;

@@ -107,6 +107,14 @@ class ReservationsApplicationTests {
     }
 
     @Test
+    public void MakeReservation_EmailStartsWithNumber_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena", "1test@gmail.com",
+                "Spanish", "12345678A", 23, false, 1, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
     public void getVariablePrice_WhenCalled_ReturnAccordingPrice() {
         int[] ages = new int[3];
         ages[0] = 1;

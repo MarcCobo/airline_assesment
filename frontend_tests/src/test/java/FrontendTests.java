@@ -131,7 +131,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "Spanish", "12345678A", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
         submitReservation();
 
@@ -155,7 +155,7 @@ public class FrontendTests {
         fillFormData("", "Erena", "23", "Spanish", "12345678A", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -180,7 +180,7 @@ public class FrontendTests {
         fillFormData("David", "", "23", "Spanish", "12345678A", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -205,7 +205,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "", "Spanish", "12345678A", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -230,7 +230,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "", "12345678A", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -255,7 +255,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "Spanish", "", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -280,7 +280,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "Spanish", "2424AAA", "test@gmail.com", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -305,7 +305,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "Spanish", "12345678A", "", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -330,7 +330,7 @@ public class FrontendTests {
         fillFormData("David", "Erena", "23", "Spanish", "12345678A", "asdasdsad", false);
 
         WebElement addPassengerButton = chromeDriver.findElement(
-                By.xpath("//button[contains(text(), '+')]"));
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
         addPassengerButton.click();
 
         submitReservation();
@@ -338,5 +338,50 @@ public class FrontendTests {
         boolean isUrlReached = new WebDriverWait(chromeDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlToBe("http://localhost:3000/fail"));
         Assertions.assertTrue(isUrlReached);
+    }
+
+    @Test
+    public void MakeReservation_EmailStartsWithNumber_UserIsRedirectedToFailurePage() {
+        // Search for flights
+        chromeDriver.get("http://localhost:3000/");
+        insertFlightData("Sevilla", "Amsterdam", "19/11/2022", "22/11/2022");
+
+        WebElement submitButton = chromeDriver.findElement(By.xpath("//button[contains(text(),'Find my Solights')]"));
+        submitButton.click();
+
+        WebElement startReservationButton = chromeDriver.findElement(By.xpath("//button[contains(text(),'Book')]"));
+        startReservationButton.click();
+
+        fillFormData("David", "Erena", "23", "Spanish", "12345678A", "1test@gmail.com", false);
+
+        WebElement addPassengerButton = chromeDriver.findElement(
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '+')]"));
+        addPassengerButton.click();
+
+        submitReservation();
+
+        boolean isUrlReached = new WebDriverWait(chromeDriver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlToBe("http://localhost:3000/fail"));
+        Assertions.assertTrue(isUrlReached);
+    }
+
+    @Test
+    public void MakeReservation_ClickMinusButtonAtZero_TextStaysAtZero() {
+        // Search for flights
+        chromeDriver.get("http://localhost:3000/");
+        insertFlightData("Sevilla", "Amsterdam", "19/11/2022", "22/11/2022");
+
+        WebElement submitButton = chromeDriver.findElement(By.xpath("//button[contains(text(),'Find my Solights')]"));
+        submitButton.click();
+
+        WebElement startReservationButton = chromeDriver.findElement(By.xpath("//button[contains(text(),'Book')]"));
+        startReservationButton.click();
+
+        WebElement minusPassengerButton = chromeDriver.findElement(
+                By.xpath("//div[@class='d-flex justify-content-between']/div[1]/button[contains(text(), '-')]"));
+        minusPassengerButton.click();
+
+        WebElement numberOfPassengers = chromeDriver.findElement(By.xpath("//div[@class='d-flex justify-content-between']/div[1]/p"));
+        Assertions.assertTrue(numberOfPassengers.getText().equals("0"));
     }
 }
