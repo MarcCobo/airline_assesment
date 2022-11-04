@@ -27,10 +27,13 @@ public class Reservation {
     @Column
     private boolean bags;
     @Column
+    @ColumnDefault("1")
+    private int numSeats;
+    @Column
     @ColumnDefault("0.0")
     private double price;
 
-    public Reservation(long id, Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
+    public Reservation(long id, Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
@@ -39,10 +42,11 @@ public class Reservation {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.numSeats = numSeats;
         this.price = price;
     }
 
-    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
+    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.flightId = flightId;
         this.name = name;
         this.surname = surname;
@@ -50,6 +54,7 @@ public class Reservation {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.numSeats = numSeats;
         this.price = price;
     }
 
@@ -65,6 +70,7 @@ public class Reservation {
         this.dni = dto.getDni();
         this.age = dto.getAge();
         this.bags = dto.isBags();
+        this.numSeats = dto.getNumSeats();
         this.price = dto.getPrice();
     }
 
@@ -132,6 +138,14 @@ public class Reservation {
         this.bags = bags;
     }
 
+    public int getNumSeats() {
+        return numSeats;
+    }
+
+    public void setNumSeats(int numSeats) {
+        this.numSeats = numSeats;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -151,6 +165,8 @@ public class Reservation {
                 ", dni='" + dni + '\'' +
                 ", age=" + age +
                 ", bags=" + bags +
+                ", numSeats=" + numSeats +
+                ", price=" + price +
                 '}';
     }
 }

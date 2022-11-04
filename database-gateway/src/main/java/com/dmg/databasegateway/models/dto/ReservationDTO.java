@@ -11,13 +11,14 @@ public class ReservationDTO {
     private String dni;
     private long age;
     private boolean bags;
+    private int numSeats;
     private double price;
 
     public ReservationDTO(){
 
     }
 
-    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags, double price) {
+    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
@@ -26,6 +27,7 @@ public class ReservationDTO {
         this.dni = dni;
         this.age = age;
         this.bags = bags;
+        this.numSeats = numSeats;
         this.price = price;
     }
 
@@ -67,6 +69,14 @@ public class ReservationDTO {
 
     public void setBags(boolean bags) {
         this.bags = bags;
+    }
+
+    public int getNumSeats() {
+        return numSeats;
+    }
+
+    public void setNumSeats(int numSeats) {
+        this.numSeats = numSeats;
     }
 
     public long getId() {
@@ -112,6 +122,7 @@ public class ReservationDTO {
                 ", dni='" + dni + '\'' +
                 ", age=" + age +
                 ", bags=" + bags +
+                ", numSeats=" + numSeats +
                 ", price=" + price +
                 '}';
     }
