@@ -24,31 +24,33 @@ function ReservationForm(props) {
   const [dni, setDni] = useState("");
   const [nationality, setNationality] = useState("");
   const [plusNineCounter, setPlusNineCounter] = useState(0);
+  const [betweenTwoNineCounter, setBetweenTwoNineCounter] = useState(0);
+  const [belowTwoCounter, setBelowTwoCounter] = useState(0);
   let newValue = 0;
   let newBag = false;
 
-  function nameChangeHandler(e){
-    setName(e.target.value)
+  function nameChangeHandler(e) {
+    setName(e.target.value);
   }
 
-  function surnameChangeHandler(e){
-    setSurname(e.target.value)
+  function surnameChangeHandler(e) {
+    setSurname(e.target.value);
   }
 
-  function emailChangeHandler(e){
-    setEmail(e.target.value)
+  function emailChangeHandler(e) {
+    setEmail(e.target.value);
   }
 
-  function ageChangeHandler(e){
-    setAge(e.target.value)
+  function ageChangeHandler(e) {
+    setAge(e.target.value);
   }
 
-  function dniChangeHandler(e){
-    setDni(e.target.value)
+  function dniChangeHandler(e) {
+    setDni(e.target.value);
   }
 
-  function nationalityChangeHandler(e){
-    setNationality(e.target.value)
+  function nationalityChangeHandler(e) {
+    setNationality(e.target.value);
   }
 
   function checkboxClickHandler() {
@@ -105,7 +107,10 @@ function ReservationForm(props) {
         price: 300.0,
       })
       .then((response) => {
-        console.log(response);
+        
+      })
+      .catch((response) => {
+        
       });
   }
 
@@ -115,54 +120,105 @@ function ReservationForm(props) {
         <Card.Body>
           <div className="row justify-content-between">
             <div className="col-sm-5">
-              <Form.Control type="text" placeholder="Enter name" onChange={nameChangeHandler}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                onChange={nameChangeHandler}
+              />
             </div>
             <div className="col-sm-5">
-              <Form.Control type="text" placeholder="Enter surname" onChange={surnameChangeHandler}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter surname"
+                onChange={surnameChangeHandler}
+              />
             </div>
           </div>
           <div className="row justify-content-between mt-4">
             <div className="col-sm-5">
-              <Form.Control type="text" placeholder="Enter nationality" onChange={nationalityChangeHandler}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter nationality"
+                onChange={nationalityChangeHandler}
+              />
             </div>
             <div className="col-sm-5">
-              <Form.Control type="number" placeholder="Enter age" onChange={ageChangeHandler}/>
+              <Form.Control
+                type="number"
+                placeholder="Enter age"
+                onChange={ageChangeHandler}
+              />
             </div>
           </div>
           <div className="row justify-content-between mt-4">
             <div className="col-sm-5">
-              <Form.Control type="email" placeholder="Enter email" onChange={emailChangeHandler}/>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={emailChangeHandler}
+              />
             </div>
             <div className="col-sm-5">
-              <Form.Control type="text" placeholder="Enter dni (00000000X)" onChange={dniChangeHandler}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter dni (00000000X)"
+                onChange={dniChangeHandler}
+              />
             </div>
           </div>
-            <div className="col-sm-8 d-flex justify-content-between mx-auto mt-4">
-            <div className="col-sm-5">
+          <div className="col-sm-12 d-flex justify-content-between mx-auto mt-4">
+            <div className="col-sm-6">
               <Form.Check
                 type="checkbox"
                 label="Check if the passenger/s is/are going to take luggage"
                 onClick={checkboxClickHandler}
               />
             </div>
-              <p>Passengers age +9</p>
-              <button
-                onClick={minusPlusNineClickHandler}
-                className={classes.counterButton}
-              >
-                -
-              </button>
-              <p className={classes.counter}>{plusNineCounter}</p>
-              <button
-                onClick={addPlusNineClickHandler}
-                className={classes.counterButton}
-              >
-                +
-              </button>
+            <div className="col-sm-6">
+              <div className="d-flex justify-content-between">
+                <p className={classes.counterTitle}>Passengers age +9</p>
+                <div className="col-sm-6 d-flex justify-content-between">
+                  <button
+                    onClick={minusPlusNineClickHandler}
+                    className={classes.counterButton}
+                  >
+                    -
+                  </button>
+                  <p className={classes.counter}>{plusNineCounter}</p>
+                  <button
+                    onClick={addPlusNineClickHandler}
+                    className={classes.counterButton}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between">
+                <p className={classes.counterTitle}>
+                  Passengers age between 2 and 9
+                </p>
+                <div className="col-sm-6 d-flex justify-content-between">
+
+                <button
+                  onClick={minusPlusNineClickHandler}
+                  className={classes.counterButton}
+                >
+                  -
+                </button>
+                <p className={classes.counter}>{plusNineCounter}</p>
+                <button
+                  onClick={addPlusNineClickHandler}
+                  className={classes.counterButton}
+                >
+                  +
+                </button>
+                </div>
+              </div>
             </div>
-            <div className="d-flex justify-content-center">
-              <p className={classes.price}>{price}€</p>
-            </div>
+          </div>
+          <div className="d-flex justify-content-center">
+            <p className={classes.price}>{price}€</p>
+          </div>
         </Card.Body>
         <div className={classes.buttonsContainer}>
           <button className={classes.cancelButton} onClick={cancelHandler}>

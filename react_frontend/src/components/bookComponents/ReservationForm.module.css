@@ -17,6 +17,11 @@
   padding-right: 5px;
 }
 
+.counterTitle{
+  font-size: 16px;
+  vertical-align: middle;
+}
+
 .buttonsContainer{
 margin-left: 136px;
 padding-bottom: 25px;
