@@ -2,6 +2,7 @@
     padding-top: 80px;
 }
 
+
 .container {
   margin-left: 102px;
   display: flex;
@@ -27,9 +28,19 @@
   margin-top: 20px;
 }
 
+.airline2{
+  position: absolute;
+  margin-top: 24px;
+  margin-left: -156px;
+}
 .date{
   display: inline-block;
   margin-top: 20px;
+}
+
+.flightno{
+  display: inline-block;
+  margin-left: 100px;
 }
 
 .img {
@@ -37,6 +48,13 @@
   left: 168px;
   width: 115px;
   height: 97px;
+}
+
+.img2 {
+  position:absolute;
+  left: 668px;
+  width: 78px;
+  height: 73px;
 }
 
 .button{
@@ -48,9 +66,9 @@
   text-decoration: none;
   border-radius: 98px;
   font-size: 25px;
-  margin-top: -52px;
-  width: 120px;
-  height: 60px;
+  margin-top: -62px;
+  width: 130px;
+  height: 85px;
   transition: background-color 0.2s linear;
 }
 

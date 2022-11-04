@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import airplaneLogo from "./Airplane-PNG-Free-Download.png";
 import ReservationForm from "../components/bookComponents/ReservationForm";
 import { propTypes } from "react-bootstrap/esm/Image";
+import arrow from './arrow-icon-10.png'
 
 function AvailableFlights({ flights }) {
   const [isModal, setIsModal] = useState(false);
@@ -57,16 +58,28 @@ function AvailableFlights({ flights }) {
                   ></img>
                   <h5 className={classes.from}>
                     Origin <br />
-                    {placeData && placeData.name}
+                   <p style={{fontSize: "30px",marginTop: "10px"}}>{placeData && placeData.name}</p> 
                   </h5>
+                  <img
+                    className={classes.img2}
+                    src={arrow}
+                    alt="Please Hire Us"
+                  ></img>
                   <h5 className={classes.to}>
                     Destination
                     <br />
-                    {placeData2 && placeData2.name}
+                    <p style={{fontSize: "30px",marginTop: "10px"}}>{placeData2 && placeData2.name}</p>
                   </h5>
 
-                  <p className={classes.airline}>Airline: {flight.airline}</p>
-                  <p className={classes.date}>Date: {flight.date}</p>
+                  <p className={classes.airline2}>Airline: {flight.airline}</p>
+
+                  <p className={classes.airline}></p>
+                  <p className={classes.date}>Flight No: {flight.flight_num}</p>
+                  <p className={classes.flightno}>Date: {flight.date}</p>
+                  
+                  <p className={classes.flightno}>No. of Layovers: {flight.layover}</p>
+                  <p className={classes.flightno}>Layover Location: {flight.layover_text}</p>
+                  
                   <button
                     className={classes.button}
                     onClick={() => {
@@ -75,7 +88,8 @@ function AvailableFlights({ flights }) {
                       setIsModal(!isModal);
                     }}
                   >
-                    Book
+                    Book <br/>
+                    {flight.price}&euro;
                   </button>
                 </div>
               </div>
