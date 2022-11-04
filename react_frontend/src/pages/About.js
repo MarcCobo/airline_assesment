@@ -1,6 +1,8 @@
 import classes from "./About.module.css";
 import { useHistory } from "react-router-dom";
 
+//Page About with info about the project
+
 function About() {
   const history = useHistory();
 

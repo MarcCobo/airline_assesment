@@ -1,5 +1,6 @@
 import classes from "./Footer.module.css";
 
+//Main Footer used in all of pages
 
 function Footer() {
   return (

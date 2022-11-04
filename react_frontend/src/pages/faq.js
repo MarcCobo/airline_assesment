@@ -1,6 +1,8 @@
 import classes from "./Faq.module.css";
 import { useHistory } from "react-router-dom";
 
+////Page FAQ with Frequently Asked Questions about the project
+
 function Faq() {
   const history = useHistory();
   function navigateHome() {

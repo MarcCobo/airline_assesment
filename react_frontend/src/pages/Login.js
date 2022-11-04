@@ -1,6 +1,7 @@
 import "./Login.css";
 import logo from './../components/homeComponents/solights_logo_main.png'
 
+//Login Page to See your Reservations. (not fully implemented due to time limits)
 
 function Login() {
   function handleSubmit(e) {
@@ -14,7 +15,7 @@ function Login() {
     } else if (!e.target.password.value) {
       alert("Password is required");
     } else if (
-      e.target.email.value === "me@example.com" &&
+      e.target.email.value === "youremail@solera.com" &&
       e.target.password.value === "123456"
     ) {
       alert("Successfully logged in");

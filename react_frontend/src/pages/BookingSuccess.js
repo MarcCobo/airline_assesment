@@ -2,6 +2,8 @@ import classes from "./BookingResult.module.css";
 import logo from "./success-icon-10.png";
 import { useHistory } from "react-router-dom";
 
+//Success Page in case Reservations succeeds. Also used for testing.
+
 function BookingSuccess() {
   const history = useHistory();
   function navigateHome() {

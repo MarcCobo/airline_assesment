@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+//Main Form Used to Input Data for the Selected Flight and Complete the Reservation. Is implemented on AvailableFlights.js
 
 function ReservationForm(props) {
   const history = useHistory();
@@ -15,6 +16,8 @@ function ReservationForm(props) {
   }
 
   // End ModalButtons Code
+
+  //Initialization of States needed
 
   const [price, setPrice] = useState(0); 
   const [bags, setBags] = useState(false);
@@ -31,6 +34,8 @@ function ReservationForm(props) {
   let newValue = 0;
   let newBag = false;
   const flightPrice = sessionStorage.getItem("price");//We have to change the '0' to props.price
+
+  //Functions to Handle the Input
 
   function nameChangeHandler(e) {
     setName(e.target.value);
@@ -149,6 +154,8 @@ function ReservationForm(props) {
         history.replace("/fail")
       });
   }
+
+  //Main Functions returns the form for the user to input data
 
   return (
     <div className="col-sm-6">

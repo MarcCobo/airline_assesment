@@ -1,5 +1,7 @@
 import classes from "./SubmitButton.module.css";
 
+// Reusable Component to for Submitting the Form of Searchbar
+
 function SubmitButton() {
   return (
     <div className={classes.div}>

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 import logo from "./solights_logo.png";
 
+//Main Header Navigation used in all of pages
+
 function MainNavigation() {
   return (
     <header className={classes.header}>
@@ -19,15 +21,6 @@ function MainNavigation() {
           <li>
             <Link to="/faq" style={{textDecoration: "none"}}>FAQ</Link>
           </li>
-          {/*
-            <div className={classes.logo} >Solights</div>
-          <li>
-            <Link to="/new">New Meetup</Link>
-          </li>
-          <li>
-            <Link to="/fav">My Favorites</Link>
-          </li>
-          */}
         </ul>
       </nav>
     </header>

@@ -1,6 +1,8 @@
 import classes from './HomeLogo.module.css'
 import logo from './solights_logo_main.png'
 
+//Reusable Component for the Main Logo
+
 function HomeLogo(){
     return(
         <div className={classes.div}>

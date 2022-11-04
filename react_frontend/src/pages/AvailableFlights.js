@@ -5,14 +5,13 @@ import ReservationForm from "../components/bookComponents/ReservationForm";
 import { propTypes } from "react-bootstrap/esm/Image";
 import arrow from './arrow-icon-10.png'
 
+//Main page that shows Available Flights.
+
 function AvailableFlights({ flights }) {
   const [isModal, setIsModal] = useState(false);
   const [placeData, setPlaceData] = useState();
   const [placeData2, setPlaceData2] = useState();
 
-  function timeToDoABooking() {
-    console.log("Here The POST for the Booking happens");
-  }
 
   //Fetching Location Data for Available Flights
   useEffect(() => {
@@ -43,6 +42,8 @@ function AvailableFlights({ flights }) {
   }
   // End Fetching Location Data for Available Flights
 
+  //Main Function returns a map of all Available Flights fetched in Searcbar.js
+  // and passed here thorugh Searchbar >> Home >> App >> AvailableFlight
   return (
     <div>
       {flights &&
@@ -54,7 +55,7 @@ function AvailableFlights({ flights }) {
                   <img
                     className={classes.img}
                     src={airplaneLogo}
-                    alt="Please Hire Us"
+                    alt="Airplane Image"
                   ></img>
                   <h5 className={classes.from}>
                     Origin <br />
@@ -63,7 +64,7 @@ function AvailableFlights({ flights }) {
                   <img
                     className={classes.img2}
                     src={arrow}
-                    alt="Please Hire Us"
+                    alt="Arrow Image"
                   ></img>
                   <h5 className={classes.to}>
                     Destination
@@ -98,7 +99,7 @@ function AvailableFlights({ flights }) {
         })}
       {isModal && (
         <div className={classes.modaldiv}>
-          <ReservationForm onCancel={() => setIsModal(!isModal)} onConfirm={timeToDoABooking} />
+          <ReservationForm onCancel={() => setIsModal(!isModal)} />
         </div>
       )}
     </div>
