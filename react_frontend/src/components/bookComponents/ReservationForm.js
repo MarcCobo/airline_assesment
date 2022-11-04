@@ -5,30 +5,35 @@ import { useState } from "react";
 import axios from "axios";
 
 function ReservationForm(props) {
-
   //ModalButtons Code
-  function cancelHandler(){
+  function cancelHandler() {
     props.onCancel();
   }
+
+  function confirmHandler() {
+    props.onConfirm();
+  }
+  // End ModalButtons Code
 
   const [price, setPrice] = useState(0); //We have to change the '0' to props.price
   const [bags, setBags] = useState(false);
 
-
   function checkboxClickHandler(e) {
     e.preventDefault();
     setBags(e.target.value);
-    callGetVariablePrice(e)
+    callGetVariablePrice(e);
   }
 
   function callGetVariablePrice(e) {
     e.preventDefault();
     axios
-      .get("http://localhost:8082/reservation/get_variable_price", {params: {
-        ages: "1, 5, 10",
-        bags: bags,
-        price: 200.0,
-      }})
+      .get("http://localhost:8082/reservation/get_variable_price", {
+        params: {
+          ages: "1, 5, 10",
+          bags: bags,
+          price: 200.0,
+        },
+      })
       .then((response) => {
         console.log(response);
       });
@@ -51,10 +56,7 @@ function ReservationForm(props) {
               <Form.Control type="text" placeholder="Enter nationality" />
             </div>
             <div className="col-sm-5">
-              <Form.Control
-                type="number"
-                placeholder="Enter age"
-              />
+              <Form.Control type="number" placeholder="Enter age" />
             </div>
           </div>
           <div className="row justify-content-between mt-4">
@@ -72,8 +74,14 @@ function ReservationForm(props) {
             <p className={classes.price}>{price}€</p>
           </div>
         </Card.Body>
-        <button className={classes.cancelButton} onClick={cancelHandler} >Cancel</button>
-        <button className={classes.bookButton} onBook={props.onBook} >Confirm</button>
+        <div className={classes.buttonsContainer}>
+          <button className={classes.cancelButton} onClick={cancelHandler}>
+            Cancel
+          </button>
+          <button className={classes.bookButton} onClick={confirmHandler}>
+            Confirm
+          </button>
+        </div>
       </Card>
     </div>
   );

@@ -3,28 +3,48 @@
     font-size: 36px;
 }
 
+.buttonsContainer{
+margin-left: 136px;
+padding-bottom: 25px;
+}
+
 .bookButton {
     display: inline-block;
     font: inherit;
     padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #800040;
+    border-radius: 21px;
+    background-color: #552280;
     color: white;
     border: 1px solid #800040;
     margin: 0 1rem;
-    width: 300px;
+    width: 183px;
+    height: 50px;
+    margin-left: 18px;
+    
+  }
+
+  .bookButton:hover {
+    border: solid 2px black;
+    color: white;
+    font-size: larger;
+    font-weight: 800;
   }
 
   .cancelButton {
     display: inline-block;
     font: inherit;
     padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #800040;
-    color: white;
+    border-radius: 21px;
+    background-color: white;
+    color: #552280;
     border: 1px solid #800040;
     margin: 0 1rem;
-    width: 300px;
+    width: 183px;
+    height: 50px;
+    margin-left: 50px
+  }
+
+  .cancelButton:hover {
+    border: solid 2px black;
+        font-size: larger;
   }

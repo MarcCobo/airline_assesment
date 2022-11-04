@@ -5,7 +5,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import AvailableFlights from "./pages/AvailableFlights";
 import { useEffect, useState } from "react";
-import ReservationForm from "./components/bookComponents/ReservationForm";
+import Login from "./pages/Login";
 
 function App() {
   const[availableFlights, setAvailableFlights]= useState()
@@ -27,9 +27,8 @@ function App() {
         {availableFlights &&  <Route path="/AvailableFlights">
           <AvailableFlights flights={availableFlights}/>
         </Route>}
-       
-        <Route path="/res">
-          <ReservationForm />
+        <Route path="/login">
+          <Login />
         </Route>
       </Switch>
    </Layout>

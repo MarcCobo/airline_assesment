@@ -5,7 +5,6 @@ import ReservationForm from "../components/bookComponents/ReservationForm";
 
 function AvailableFlights({ flights }) {
   const [isModal, setIsModal] = useState(false);
-
   const [placeData, setPlaceData] = useState();
   const [placeData2, setPlaceData2] = useState();
 
@@ -14,6 +13,12 @@ function AvailableFlights({ flights }) {
     setIsModal(!isModal);
   }
 
+  function timeToDoABooking(){
+    console.log("Here The POST for the Booking happens")
+  }
+
+  
+  //Fetching Location Data for Available Flights
   useEffect(() => {
     getAllLocations();
   }, []);
@@ -40,6 +45,8 @@ function AvailableFlights({ flights }) {
         });
       });
   }
+  // End Fetching Location Data for Available Flights
+
 
   return (
     <div>
@@ -76,7 +83,7 @@ function AvailableFlights({ flights }) {
         })}
       {isModal && (
         <div className={classes.modaldiv}>
-          <ReservationForm onCancel={formToggle} />
+          <ReservationForm onCancel={formToggle} onConfirm={timeToDoABooking} />
         </div>
       )}
     </div>
