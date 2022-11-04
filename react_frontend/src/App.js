@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import BookingSuccess from "./pages/BookingSuccess";
 import BookingFailure from "./pages/BookingFailure";
+import Faq from "./pages/Faq";
+import About from "./pages/About";
 
 function App() {
   const[availableFlights, setAvailableFlights]= useState()
@@ -37,6 +39,12 @@ function App() {
         </Route>
         <Route path="/fail">
           <BookingFailure />
+        </Route>
+        <Route path="/faq">
+          <Faq/>
+        </Route>
+        <Route path="/about">
+          <About/>
         </Route>
       </Switch>
    </Layout>
