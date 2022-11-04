@@ -22,10 +22,10 @@ public class FrontendTests {
         chromeDriver.manage().window().maximize();
     }
 
-//    @AfterAll
-//    public static void tearDown(){
-//        chromeDriver.quit();
-//    }
+    @AfterAll
+    public static void tearDown(){
+        chromeDriver.quit();
+    }
 
     private void insertFlightData(String origin, String destination, String startDate, String endDate){
         chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));

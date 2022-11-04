@@ -85,7 +85,23 @@ class ReservationsApplicationTests {
     @Test
     public void MakeReservation_NegativeAge_ReturnBadRequest() throws IOException {
         ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena", "ErenJeager@solera.com",
-                "Spanish", "", -23, false, 1, 0.0);
+                "Spanish", "12345678A", -23, false, 1, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void MakeReservation_EmptyEmail_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena", "",
+                "Spanish", "12345678A", 23, false, 1, 0.0);
+        ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void MakeReservation_IncorrectEmailFormat_ReturnBadRequest() throws IOException {
+        ReservationDTO rev = new ReservationDTO(1, 1L, "David", "Erena", "asasdsadasd.12",
+                "Spanish", "12345678A", 23, false, 1, 0.0);
         ResponseEntity<ReservationDTO> response = service.makeReservation(rev);
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
