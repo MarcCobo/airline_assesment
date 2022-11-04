@@ -7,6 +7,8 @@ public class ReservationDTO {
     private long flightId;
     private String name;
     private String surname;
+
+    private String email;
     private String nationality;
     private String dni;
     private long age;
@@ -14,15 +16,16 @@ public class ReservationDTO {
     private int numSeats;
     private double price;
 
-    public ReservationDTO(){
+    public ReservationDTO() {
 
     }
 
-    public ReservationDTO(long id, long flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
+    public ReservationDTO(long id, long flightId, String name, String surname, String email, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
         this.surname = surname;
+        this.email = email;
         this.nationality = nationality;
         this.dni = dni;
         this.age = age;
@@ -71,6 +74,10 @@ public class ReservationDTO {
         this.bags = bags;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getNumSeats() {
         return numSeats;
     }
@@ -111,6 +118,10 @@ public class ReservationDTO {
         return bags;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "ReservationDTO{" +
@@ -118,6 +129,7 @@ public class ReservationDTO {
                 ", flightId=" + flightId +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", dni='" + dni + '\'' +
                 ", age=" + age +

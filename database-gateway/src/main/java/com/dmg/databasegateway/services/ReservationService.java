@@ -42,7 +42,7 @@ public class ReservationService {
         Place destination = placeRepository.save(new Place("Madrid"));
         Flight newFlight = flightRepository.save(new Flight("Ryanair", "AN237190", origin, destination, LocalDate.now(), 50, 2L, "2 WHOLE LAYOVERS", true, 56));
 
-        Reservation newReservation = new Reservation(newFlight,"George","Kapsalakos","Greek","AA12345",25,true, 1, 10.0);
+        Reservation newReservation = new Reservation(newFlight,"George","Kapsalakos","gkapsalokos@solera.com","Greek","AA12345",25,true, 1, 10.0);
         return repository.save(newReservation);
     }
 

@@ -19,6 +19,8 @@ public class Reservation {
     @Column
     private String surname;
     @Column
+    private String email;
+    @Column
     private String nationality;
     @Column
     private String dni;
@@ -33,11 +35,12 @@ public class Reservation {
     @ColumnDefault("0.0")
     private double price;
 
-    public Reservation(long id, Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
+    public Reservation(long id, Flight flightId, String name, String surname, String email, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.id = id;
         this.flightId = flightId;
         this.name = name;
         this.surname = surname;
+        this.email = email;
         this.nationality = nationality;
         this.dni = dni;
         this.age = age;
@@ -46,10 +49,11 @@ public class Reservation {
         this.price = price;
     }
 
-    public Reservation(Flight flightId, String name, String surname, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
+    public Reservation(Flight flightId, String name, String surname, String email, String nationality, String dni, long age, boolean bags, int numSeats, double price) {
         this.flightId = flightId;
         this.name = name;
         this.surname = surname;
+        this.email = email;
         this.nationality = nationality;
         this.dni = dni;
         this.age = age;
@@ -66,6 +70,7 @@ public class Reservation {
         this.id = dto.getId();
         this.name = dto.getName();
         this.surname = dto.getSurname();
+        this.email = dto.getEmail();
         this.nationality = dto.getNationality();
         this.dni = dto.getDni();
         this.age = dto.getAge();
@@ -154,6 +159,14 @@ public class Reservation {
         this.price = price;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -161,6 +174,7 @@ public class Reservation {
                 ", flightId=" + flightId +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", dni='" + dni + '\'' +
                 ", age=" + age +
