@@ -5,6 +5,12 @@ import { useState } from "react";
 import axios from "axios";
 
 function ReservationForm(props) {
+
+  //ModalButtons Code
+  function cancelHandler(){
+    props.onCancel();
+  }
+
   const [price, setPrice] = useState(0); //We have to change the '0' to props.price
   const [bags, setBags] = useState(false);
 
@@ -29,7 +35,7 @@ function ReservationForm(props) {
   }
 
   return (
-    <div className="col-sm-6 offset-3">
+    <div className="col-sm-6">
       <Card>
         <Card.Body>
           <div className="row justify-content-between">
@@ -66,6 +72,8 @@ function ReservationForm(props) {
             <p className={classes.price}>{price}€</p>
           </div>
         </Card.Body>
+        <button className={classes.cancelButton} onClick={cancelHandler} >Cancel</button>
+        <button className={classes.bookButton} onBook={props.onBook} >Confirm</button>
       </Card>
     </div>
   );

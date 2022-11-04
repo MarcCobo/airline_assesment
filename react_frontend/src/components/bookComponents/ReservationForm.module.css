@@ -2,3 +2,29 @@
     font-weight: bold;
     font-size: 36px;
 }
+
+.bookButton {
+    display: inline-block;
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #800040;
+    color: white;
+    border: 1px solid #800040;
+    margin: 0 1rem;
+    width: 300px;
+  }
+
+  .cancelButton {
+    display: inline-block;
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #800040;
+    color: white;
+    border: 1px solid #800040;
+    margin: 0 1rem;
+    width: 300px;
+  }

@@ -59,3 +59,29 @@
   color: #552280;
   border: 0.2px solid black;
 }
+
+.modaldiv{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.33);
+  top:0
+}
+
+.reservationdiv{
+  position: absolute;
+}
+
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #800040;
+  color: white;
+  border: 1px solid #800040;
+  margin: 0 1rem;
+}
