@@ -130,7 +130,7 @@ function ReservationForm(props) {
   function postReservation() {
     axios
       .post("http://localhost:8082/reservation/add", {
-        flightId: sessionStorage.key("id"),
+        flightId: sessionStorage.getItem("id"),
         name: name,
         surname: surname,
         nationality: nationality,
