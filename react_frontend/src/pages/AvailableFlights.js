@@ -9,16 +9,10 @@ function AvailableFlights({ flights }) {
   const [placeData, setPlaceData] = useState();
   const [placeData2, setPlaceData2] = useState();
 
-  //Modal
-  function formToggle() {
-    setIsModal(!isModal);
+  function timeToDoABooking() {
+    console.log("Here The POST for the Booking happens");
   }
 
-  function timeToDoABooking(){
-    console.log("Here The POST for the Booking happens")
-  }
-
-  
   //Fetching Location Data for Available Flights
   useEffect(() => {
     getAllLocations();
@@ -48,7 +42,6 @@ function AvailableFlights({ flights }) {
   }
   // End Fetching Location Data for Available Flights
 
-
   return (
     <div>
       {flights &&
@@ -74,7 +67,14 @@ function AvailableFlights({ flights }) {
 
                   <p className={classes.airline}>Airline: {flight.airline}</p>
                   <p className={classes.date}>Date: {flight.date}</p>
-                  <button className={classes.button} onClick={formToggle}>
+                  <button
+                    className={classes.button}
+                    onClick={() => {
+                      sessionStorage.setItem("id", flight.id);
+                      sessionStorage.setItem("price", flight.price);
+                      setIsModal(!isModal);
+                    }}
+                  >
                     Book
                   </button>
                 </div>
@@ -84,7 +84,7 @@ function AvailableFlights({ flights }) {
         })}
       {isModal && (
         <div className={classes.modaldiv}>
-          <ReservationForm onCancel={formToggle} onConfirm={timeToDoABooking} />
+          <ReservationForm onCancel={() => setIsModal(!isModal)} onConfirm={timeToDoABooking} />
         </div>
       )}
     </div>

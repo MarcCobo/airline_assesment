@@ -14,9 +14,6 @@ function ReservationForm(props) {
     props.onCancel();
   }
 
-  function confirmHandler() {
-    props.onConfirm();
-  }
   // End ModalButtons Code
 
   const [price, setPrice] = useState(0); 
@@ -33,7 +30,7 @@ function ReservationForm(props) {
   const [numSeats, setNumSeats] = useState(0);
   let newValue = 0;
   let newBag = false;
-  const flightPrice = 200;//We have to change the '0' to props.price
+  const flightPrice = sessionStorage.getItem("price");//We have to change the '0' to props.price
 
   function nameChangeHandler(e) {
     setName(e.target.value);
@@ -133,7 +130,7 @@ function ReservationForm(props) {
   function postReservation() {
     axios
       .post("http://localhost:8082/reservation/add", {
-        flightId: 1,
+        flightId: sessionStorage.key("id"),
         name: name,
         surname: surname,
         nationality: nationality,
@@ -214,6 +211,7 @@ function ReservationForm(props) {
               />
             </div>
             <div className="col-sm-6">
+                {/* This sould be a component for each counter but there is no more time :D */}
               <div className="d-flex justify-content-between">
                 <p className={classes.counterTitle}>Passengers age +9</p>
                 <div className="col-sm-6 d-flex justify-content-between">
@@ -275,7 +273,7 @@ function ReservationForm(props) {
             </div>
           </div>
           <div className="d-flex justify-content-center">
-            <p className={classes.price}>{price}€</p>
+            <p className={classes.price}>{price.toFixed(2)}€</p>
           </div>
         </Card.Body>
         <div className={classes.buttonsContainer}>
