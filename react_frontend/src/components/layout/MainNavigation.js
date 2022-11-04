@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
-import logo from './solights_logo.png';
-
+import logo from "./solights_logo.png";
 
 function MainNavigation() {
   return (
     <header className={classes.header}>
-
-      <Link to="/"><img className={classes.img} src={logo} alt="Solights" /></Link>
+      <Link to="/">
+        <img className={classes.img} src={logo} alt="Solights" />
+      </Link>
       <nav>
         <ul>
-          <li>
-          <Link to="/about">About</Link>
+          <li style={{textDecoration: "none"}}>
+            <Link to="/login">Login</Link>
           </li>
-          {
-            /*
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          {/*
             <div className={classes.logo} >Solights</div>
           <li>
             <Link to="/new">New Meetup</Link>
