@@ -22,6 +22,7 @@ public class ReservationController {
     @Autowired
     ReservationService service;
 
+    @CrossOrigin
     @PostMapping(path = "/add")
     public ResponseEntity<ReservationDTO> makeReservation(@RequestBody ReservationDTO reservation) throws IOException {
         return service.makeReservation(reservation);

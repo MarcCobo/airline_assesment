@@ -3,6 +3,20 @@
     font-size: 36px;
 }
 
+.counterButton{
+  border-radius: 50%;
+  background-color: #552280;
+  height: 35px;
+  width: 35px;
+  color: white;
+}
+
+.counter{
+  font-size: 24px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 .buttonsContainer{
 margin-left: 136px;
 padding-bottom: 25px;
