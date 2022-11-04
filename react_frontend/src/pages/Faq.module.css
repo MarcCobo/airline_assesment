@@ -1,0 +1,63 @@
+
+.bigContainer{
+    padding: 86px;
+}
+
+  .smallContainer {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 1172px;
+    padding-bottom: 66px;
+    padding-top: 46px;
+    text-align: center;
+    width: 100%;
+    margin-left: 93px;
+  }
+  
+  .infoDiv {
+    margin-bottom: 26px;
+    justify-content: center;
+  }
+
+  .infoDiv > h2 {
+    color: #676767;
+    display: inline-block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .infoDiv > h4 {
+    color: #676767;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .infoDiv > p {
+    color: #676767;
+    font-size: 16px;
+    height: 40px;
+    outline: 0;
+    padding: 0 15px;
+    transition: all 0.3s;
+  }
+
+  .homeButton {
+    border: solid 1px black;
+    border-radius: 98px;
+    background-color: white;
+    color: #552280;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    max-width: 420px;
+    padding: 10px 0;
+    width: 60%;
+    height: 50px;
+  }
+  .homeButton:hover {
+    border: solid 2px black;
+    font-size: larger;
+  }
+
+ 

@@ -16,6 +16,9 @@ function MainNavigation() {
           <li>
             <Link to="/about" style={{textDecoration: "none"}}>About</Link>
           </li>
+          <li>
+            <Link to="/faq" style={{textDecoration: "none"}}>FAQ</Link>
+          </li>
           {/*
             <div className={classes.logo} >Solights</div>
           <li>
