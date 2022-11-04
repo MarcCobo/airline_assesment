@@ -3,8 +3,12 @@ import Card from "react-bootstrap/Card";
 import classes from "./ReservationForm.module.css";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 
 function ReservationForm(props) {
+  const history = useHistory();
+
   //ModalButtons Code
   function cancelHandler() {
     props.onCancel();
@@ -107,10 +111,11 @@ function ReservationForm(props) {
         price: 300.0,
       })
       .then((response) => {
+        history.replace("/success")
         
       })
       .catch((response) => {
-        
+        history.replace("/fail")
       });
   }
 
