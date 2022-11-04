@@ -10,11 +10,11 @@ function MainNavigation() {
       </Link>
       <nav>
         <ul>
-          <li style={{textDecoration: "none"}}>
-            <Link to="/login">Login</Link>
+          <li>
+            <Link to="/login" style={{textDecoration: "none"}}>Login</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about" style={{textDecoration: "none"}}>About</Link>
           </li>
           {/*
             <div className={classes.logo} >Solights</div>

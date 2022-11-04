@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import AvailableFlights from "./pages/AvailableFlights";
 import { useEffect, useState } from "react";
 import Login from "./pages/Login";
+import BookingSuccess from "./pages/BookingSuccess";
 
 function App() {
   const[availableFlights, setAvailableFlights]= useState()
@@ -29,6 +30,9 @@ function App() {
         </Route>}
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/success">
+          <BookingSuccess />
         </Route>
       </Switch>
    </Layout>
