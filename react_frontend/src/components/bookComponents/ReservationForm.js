@@ -15,7 +15,7 @@ function ReservationForm(props) {
   }
   // End ModalButtons Code
 
-  const [price, setPrice] = useState(0); //We have to change the '0' to props.price
+  const [price, setPrice] = useState(0); 
   const [bags, setBags] = useState(false);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -26,8 +26,10 @@ function ReservationForm(props) {
   const [plusNineCounter, setPlusNineCounter] = useState(0);
   const [betweenTwoNineCounter, setBetweenTwoNineCounter] = useState(0);
   const [belowTwoCounter, setBelowTwoCounter] = useState(0);
+  const [numSeats, setNumSeats] = useState(0);
   let newValue = 0;
   let newBag = false;
+  const flightPrice = 200;//We have to change the '0' to props.price
 
   function nameChangeHandler(e) {
     setName(e.target.value);
@@ -57,34 +59,66 @@ function ReservationForm(props) {
     newBag = !bags;
     console.log(newBag);
     setBags(newBag);
-    callGetVariablePrice(newBag, plusNineCounter);
+    callGetVariablePrice(newBag, plusNineCounter, betweenTwoNineCounter, belowTwoCounter);
   }
 
   function addPlusNineClickHandler() {
     newValue = plusNineCounter + 1;
     setPlusNineCounter(newValue);
-    callGetVariablePrice(bags, newValue);
+    callGetVariablePrice(bags, newValue, betweenTwoNineCounter, belowTwoCounter);
   }
 
   function minusPlusNineClickHandler() {
     newValue = plusNineCounter - 1;
     if (newValue < 0) newValue = 0;
     setPlusNineCounter(newValue);
-    callGetVariablePrice(bags, newValue);
+    callGetVariablePrice(bags, newValue, betweenTwoNineCounter, belowTwoCounter);
   }
 
-  function callGetVariablePrice(bags, plusNineCounter) {
+  function addBetweenTwoNineCounter() {
+    newValue = betweenTwoNineCounter + 1;
+    setBetweenTwoNineCounter(newValue);
+    callGetVariablePrice(bags, plusNineCounter, newValue, belowTwoCounter);
+  }
+
+  function minusBetweenTwoNineCounter() {
+    newValue = betweenTwoNineCounter - 1;
+    if (newValue < 0) newValue = 0;
+    setBetweenTwoNineCounter(newValue);
+    callGetVariablePrice(bags, plusNineCounter, newValue, belowTwoCounter);
+  }
+
+  function addBelowTwoCounter() {
+    newValue = belowTwoCounter + 1;
+    setBelowTwoCounter(newValue);
+    callGetVariablePrice(bags, plusNineCounter, betweenTwoNineCounter, newValue);
+  }
+
+  function minusBelowTwoCounter() {
+    newValue = belowTwoCounter - 1;
+    if (newValue < 0) newValue = 0;
+    setBelowTwoCounter(newValue);
+    callGetVariablePrice(bags, plusNineCounter, betweenTwoNineCounter, newValue);
+  }
+
+  function callGetVariablePrice(bags, plusNineCounter, betweenTwoNineCounter, belowTwoCounter) {
     let agesString = [];
     for (let i = 0; i < plusNineCounter; i++) {
       agesString.push("18");
     }
-
+    for (let i = 0; i < betweenTwoNineCounter; i++) {
+      agesString.push("5");
+    }
+    for (let i = 0; i < belowTwoCounter; i++) {
+      agesString.push("1");
+    }
+    setNumSeats(agesString.length)
     axios
       .get("http://localhost:8082/reservation/get_variable_price", {
         params: {
           ages: agesString.join(),
           bags: bags,
-          price: 200.0,
+          price: flightPrice,
         },
       })
       .then((response) => {
@@ -103,15 +137,11 @@ function ReservationForm(props) {
         age: age,
         bags: bags,
         email: email,
-        numSeats: 2,
-        price: 300.0,
+        numSeats: numSeats,
+        price: price,
       })
-      .then((response) => {
-        
-      })
-      .catch((response) => {
-        
-      });
+      .then((response) => {})
+      .catch((response) => {});
   }
 
   return (
@@ -193,25 +223,44 @@ function ReservationForm(props) {
                   </button>
                 </div>
               </div>
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between mt-2">
                 <p className={classes.counterTitle}>
                   Passengers age between 2 and 9
                 </p>
                 <div className="col-sm-6 d-flex justify-content-between">
-
-                <button
-                  onClick={minusPlusNineClickHandler}
-                  className={classes.counterButton}
-                >
-                  -
-                </button>
-                <p className={classes.counter}>{plusNineCounter}</p>
-                <button
-                  onClick={addPlusNineClickHandler}
-                  className={classes.counterButton}
-                >
-                  +
-                </button>
+                  <button
+                    onClick={minusBetweenTwoNineCounter}
+                    className={classes.counterButton}
+                  >
+                    -
+                  </button>
+                  <p className={classes.counter}>{betweenTwoNineCounter}</p>
+                  <button
+                    onClick={addBetweenTwoNineCounter}
+                    className={classes.counterButton}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between mt-1">
+                <p className={classes.counterTitle}>
+                  Passengers age below 2
+                </p>
+                <div className="col-sm-6 d-flex justify-content-between">
+                  <button
+                    onClick={minusBelowTwoCounter}
+                    className={classes.counterButton}
+                  >
+                    -
+                  </button>
+                  <p className={classes.counter}>{belowTwoCounter}</p>
+                  <button
+                    onClick={addBelowTwoCounter}
+                    className={classes.counterButton}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>
