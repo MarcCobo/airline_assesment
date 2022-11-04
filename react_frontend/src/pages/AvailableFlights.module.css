@@ -12,3 +12,50 @@
   background-color: white;
   border-radius: 50px;
 }
+
+.from{
+  display: inline-block;
+  margin-right: 600px;
+}
+
+.to{
+  display: inline-block;
+}
+
+.airline{
+  display: block;
+  margin-top: 20px;
+}
+
+.date{
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.img {
+  position:absolute;
+  left: 168px;
+  width: 115px;
+  height: 97px;
+}
+
+.button{
+  position: absolute;
+  right: 165px;
+  background-color: #552280;
+  border: none;
+  color: white;
+  text-decoration: none;
+  border-radius: 98px;
+  font-size: 25px;
+  margin-top: -52px;
+  width: 120px;
+  height: 60px;
+  transition: background-color 0.2s linear;
+}
+
+.button:hover {
+  background-color: white;
+  color: #552280;
+  border: 0.2px solid black;
+}

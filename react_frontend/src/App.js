@@ -24,9 +24,10 @@ function App() {
         <Route path="/" exact>
           <Home addFlights={addFlights} />
         </Route>
-        <Route path="/AvailableFlights">
+        {availableFlights &&  <Route path="/AvailableFlights">
           <AvailableFlights flights={availableFlights}/>
-        </Route>
+        </Route>}
+       
         <Route path="/res">
           <ReservationForm />
         </Route>
